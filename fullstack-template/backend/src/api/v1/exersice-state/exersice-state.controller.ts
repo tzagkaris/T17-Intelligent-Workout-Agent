@@ -7,8 +7,10 @@ export class ExersiceStateController {
 
   public applyRoutes(): Router {
     const router = Router();
-    
+
     router.get('/state', this.logic.getState, this.logic.getStateOnError);
+
+    router.post('/stateUp', this.logic.incRep, this.logic.getStateOnError);
 
     return router;
   }
