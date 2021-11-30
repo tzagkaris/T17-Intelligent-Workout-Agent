@@ -96,6 +96,8 @@ export class OnExersiceLogic {
       if(this.status.currExercise.type != 'CountDown') this.status.currRep = 0;
     }
     else next(new Error("no valid mode was specified"));
+
+    res.send('ok');
   }
 
 
