@@ -10,7 +10,9 @@ export class ExersiceStateController {
 
     router.get('/state', this.logic.getState, this.logic.getStateOnError);
 
-    router.post('/stateUp', this.logic.incRep, this.logic.getStateOnError);
+    router.post('/stateUp', this.logic.incState, this.logic.getStateOnError);
+
+    router.delete('/reset', this.logic.resetState, this.logic.getStateOnError);
 
     return router;
   }

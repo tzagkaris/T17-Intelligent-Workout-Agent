@@ -49,14 +49,16 @@ export class OnExersiceLogic {
     // if error call next(new Error("error desc")) in order to call the function bellow
 
     this.broadcastState(req.body.event);
-    res.send({ requestStatus: 'ok' });
+    res.send(this.status);
   }
 
-  public incRep = (req: Request, res: Response, next: NextFunction) => {
-    // try to increase currRep by one, if rep is capped try to increase currSet by one and
-    // if set is capped change current exercise. If this is the last exercise change the workout condicion to finished.
+  public incState = (req: Request, res: Response, next: NextFunction) => {
 
-    if(this.status.condition = "finished") res.send('ok');
+    if(this.status.condition == "finished") {
+
+      res.send('ok');
+      return;
+    }
 
     switch(this.status.currExercise.type) {
       case 'Regular':
@@ -68,10 +70,43 @@ export class OnExersiceLogic {
         this.incRepCountDown();
         break;
     }
-
+    /*  */
     this.broadcastState(req.body.event);
-    res.send({ requestStatus: 'ok' });
+    res.send(this.status);
   }
+
+  public resetState = (req: Request, res: Response, next: NextFunction) => {
+
+    if(req.body.mode === 'all') {
+
+      this.status = {
+        currExercise: this.exerciseArray[0],
+        exerciseNo: 0,
+        currSet: 1,
+        currRep: 0,
+        condition: "ongoing",
+      };
+
+    }
+    else if(req.body.mode === 'exercise') {
+      this.status.currSet = 1;
+      if(this.status.currExercise.type != 'CountDown') this.status.currRep = 0;
+    }
+    else if(req.body.mode === 'rep') {
+      if(this.status.currExercise.type != 'CountDown') this.status.currRep = 0;
+    }
+    else next(new Error("no valid mode was specified"));
+  }
+
+
+
+
+
+
+
+
+
+
 
   public incRepRegular = () => {
     const exCap = this.exerciseArray.length;
@@ -84,7 +119,7 @@ export class OnExersiceLogic {
     let exCapped:boolean = false;
 
     // check if reps are capped
-    if(cRep === this.status.currExercise.reps[cSet] - 1)
+    if(cRep === this.status.currExercise.reps[cSet - 1] - 1)
       repsCapped = true;
 
     // check if sets are capped
@@ -120,7 +155,7 @@ export class OnExersiceLogic {
   }
 
   public incRepCountDown = () => {
-    
+
     const exCap = this.exerciseArray.length;
     const cSet = this.status.currSet;
     const exNo = this.status.exerciseNo;
