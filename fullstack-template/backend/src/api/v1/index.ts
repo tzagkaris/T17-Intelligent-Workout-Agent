@@ -3,12 +3,19 @@ import { ResourceController } from '../shared';
 import { ITask, TaskModel } from '@app/models';
 import { FilesController } from './files/files.controller';
 import { SocketEventsController } from './socket-events/socket-events.controller';
+import { ExersiceStateController } from './exersice-state/exersice-state.controller';
 
 
 const apiV1Router = express.Router();
 
 
 apiV1Router
+
+  .use(
+    '/exercise',
+    new ExersiceStateController().applyRoutes()
+  )
+
   // Sockets events routes
   .use(
     '/socket-events',
@@ -25,7 +32,7 @@ apiV1Router
   .use(
     '/tasks',
     new ResourceController<ITask>(TaskModel).applyRoutes()
-  )
+  );
 
 
 export { apiV1Router };
