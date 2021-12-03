@@ -77,17 +77,17 @@ export class OnExersiceLogic {
 
   public resetState = (req: Request, res: Response, next: NextFunction) => {
 
-    if(req.body.mode === 'all') {
+/*     if(req.body.mode === 'all') {
+ */
+    this.status = {
+      currExercise: this.exerciseArray[0],
+      exerciseNo: 0,
+      currSet: 1,
+      currRep: 0,
+      condition: "ongoing",
+    };
 
-      this.status = {
-        currExercise: this.exerciseArray[0],
-        exerciseNo: 0,
-        currSet: 1,
-        currRep: 0,
-        condition: "ongoing",
-      };
-
-    }
+/*     }
     else if(req.body.mode === 'exercise') {
       this.status.currSet = 1;
       if(this.status.currExercise.type != 'CountDown') this.status.currRep = 0;
@@ -95,8 +95,9 @@ export class OnExersiceLogic {
     else if(req.body.mode === 'rep') {
       if(this.status.currExercise.type != 'CountDown') this.status.currRep = 0;
     }
-    else next(new Error("no valid mode was specified"));
+    else next(new Error("no valid mode was specified")); */
 
+    this.broadcastState("exercise-state");
     res.send('ok');
   }
 

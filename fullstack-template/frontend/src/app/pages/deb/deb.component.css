@@ -1,0 +1,59 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.align-equal {
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.align-center {
+  align-items: center;
+  justify-content: center;
+
+}
+
+.box-setsize {
+
+}
+
+.header-2 {
+  font-size: 1.5rem;
+}
+
+.header-3 {
+  font-size: 1.2rem;
+}
+
+.text-1 {
+  font-size: 1rem;
+}
+
+.mar-block {
+  margin-block: 1rem;
+}
+
+.mar-top {
+  margin-top: 3rem;
+}
+
+.btn-trid {
+  background-color: goldenrod;
+  border-color: goldenrod;
+}
+
+.btn-trid:hover {
+  background-color: rgb(185, 142, 34);
+  border-color: rgb(185, 142, 34);
+}
