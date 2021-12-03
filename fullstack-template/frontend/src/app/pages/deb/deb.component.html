@@ -1,0 +1,27 @@
+<div id="gcontainer" class="flex-column align-center box-setsize">
+  <!-- Display exercise information -->
+  <div id="infolist" class="header-2">
+    <div class="infoHeader mar-block">This is a hidden page for debugging use only.</div>
+
+    <ul id="stateshowlist" class="text-1">
+      <li class="header-3">Workout Condition is: <span style="float: right; font-weight: 600;">{{currentExerciseState.condition}}</span></li>
+      <li class="header-3">Exercise index: <span style="float: right; font-weight: 600;">{{currentExerciseState.exerciseNo}}</span></li>
+      <li *ngIf="currentExerciseState.currSet != undefined" class="header-3">Current Set is: <span style="float: right; font-weight: 600;">{{currentExerciseState.currSet}}</span></li>
+      <li *ngIf="currentExerciseState.currRep != undefined" class="header-3">Current Rep is: <span style="float: right; font-weight: 600;">{{currentExerciseState.currRep}}</span></li>
+    </ul>
+
+    <ul id="stateshowlist" class="text-1">
+      <li class="header-3">Exercise name: <span style="float: right; font-weight: 600;">{{currentExerciseState.currExercise.name}}</span></li>
+      <li class="header-3">All sets: <span style="float: right; font-weight: 600;">{{currentExerciseState.currExercise.sets}}</span></li>
+      <li *ngIf="currentExerciseState.currExercise.reps != undefined" class="header-3">All reps: <span style="float: right; font-weight: 600;">{{currentExerciseState.currExercise.reps}}</span></li>
+      <li *ngIf="currentExerciseState.currExercise.countDownTimeInSecs != undefined" class="header-3">Countdown time is: <span style="float: right; font-weight: 600;">{{currentExerciseState.currExercise.countDownTimeInSecs}}</span></li>
+      <li class="header-3">Type is: <span style="float: right; font-weight: 600;">{{currentExerciseState.currExercise.type}}</span></li>
+    </ul>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+      <div class="btn btn-primary btn-trid" (click)="fetchExState()">Get State</div>
+      <div class="btn btn-primary" (click)="upExState()">Up state</div>
+      <div class="btn btn-secondary" (click)="resetExState()">Reset State</div>
+    </div>
+  </div>
+</div>
