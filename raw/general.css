@@ -100,7 +100,7 @@ body {
   color: #EDECEC;
 }
 
-.color-br--shade--dark {
+.color-br--shade--darkest {
   background-color: #323232;
 }
 
@@ -196,9 +196,52 @@ body {
   justify-content: center;
 }
 
+/* add this to make an element change pointer when clicked */
+
 .clickable-card:hover {
   cursor: pointer;
 }
 
+/* BUTTONS ( no background color or text color specified ) */
 
+/* wide button */
+.button-prim {
+  display: inline;
+  border-radius: 5px;
 
+  padding: 0.2rem;
+  padding-inline: .8rem;
+}
+
+.button-switch {
+  display: inline;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  column-gap: .2rem;
+}
+
+.button-switch--checked {
+
+  z-index: 1;
+
+  border-radius: 5px;
+  padding: .2rem;
+  padding-inline: .8rem;
+}
+
+.button-switch--unchecked {
+
+  border-radius: 5px;
+  padding: .2rem;
+  padding-inline: .8rem;
+}
+
+.button-switch:hover,
+.button-switch--checked:hover,
+.button-switch--unchecked:hover {
+  cursor: pointer;
+}
