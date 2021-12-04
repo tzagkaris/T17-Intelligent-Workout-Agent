@@ -1,4 +1,4 @@
-/* importing our font ( found on the fonts folder ) */
+/* importing the font ( found on the fonts folder ) */
 @font-face {
   font-family: RedHatDisplay;
   src: url('./../fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf');
