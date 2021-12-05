@@ -1,0 +1,30 @@
+.user-container {
+  width: 920px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  justify-content: end;
+  align-items: center;
+
+  column-gap: 1.75rem;
+  padding-right: 1rem;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: end;
+  padding-block: .2rem;
+}
+
+.fullname {
+  padding-bottom: .2em;
+}
+
+.profile-pic-container {
+  width: 72px;
+  height: 72px;
+}

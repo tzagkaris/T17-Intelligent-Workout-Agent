@@ -1,0 +1,23 @@
+body {
+  background-color: #323232;
+}
+
+.component-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  gap: 70px;
+  justify-content: center;
+  align-items: end;
+
+  margin-top: 70px;
+}
+
+.component-subcontainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap:nowrap;
+
+  gap: 170px;
+}

@@ -4,10 +4,24 @@
   src: url('./../raw/fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf');
 }
 
+@font-face {
+  font-family: RedHatDisplayItalics;
+  src: url('./../raw/fonts/Red_Hat_Display/RedHatDisplay-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('./../raw/fonts/Roboto/Roboto-Regular.ttf');
+}
+
 /* SETTING DEFAULTS !!! */
 
 body {
   font-family: RedHatDisplay;
+}
+
+.font--Roboto {
+  font-family: Roboto;
 }
 
 /* SETTING UTILITY CLASSES */
@@ -19,7 +33,8 @@ body {
 .header-3,
 .header-4,
 .para-1,
-.para-2 {
+.para-2,
+h1, h2, h3, h4, h5 {
   font-weight: 400;
 }
 
@@ -45,6 +60,11 @@ body {
 
 .para-1 {
   font-size: 1.25rem;   /* 20px */
+}
+
+/* added later */
+.para-25 {
+  font-size: 1.1rem;   /* 18px */
 }
 
 .para-2 {
@@ -145,6 +165,10 @@ body {
   text-align: center;
 }
 
+.text--italics {
+  font-style: italic;
+}
+
 /* creates this effent when text overflows the container */
 /* this is a c... */
 .text--overflow-ellipsis {
@@ -188,20 +212,6 @@ body {
 
 .padding-bottom-1 {
   padding-bottom: 1rem;
-}
-
-
-
-/* a container to center the component in the center for easy viewing */
-/* use in raw only */
-.show-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  align-items: center;
-  justify-content: center;
 }
 
 /* add this to make an element change pointer when clicked */
@@ -252,4 +262,30 @@ body {
 .button-switch--checked:hover,
 .button-switch--unchecked:hover {
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* a container to center the component in the center for easy viewing */
+/* use in raw only */
+.show-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
 }
