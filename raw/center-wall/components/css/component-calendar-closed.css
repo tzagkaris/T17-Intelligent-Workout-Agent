@@ -1,8 +1,8 @@
 .calender-closed-component-container{
   width: 920px;
-  height: 556px;
+  height: 520px;
 
-  background-color: #323232;
+  background-image:url('./../assets/background-component-calendar-closed.png');
 
   display: flex;
   flex-direction: column;
@@ -10,6 +10,8 @@
 
   align-items: center;
   justify-content: center;
+
+  gap: 1.2rem;
 }
 
 .calendar-title-row {
@@ -32,3 +34,124 @@
   width: 20%;
 }
 
+/* calendar rows */
+
+.calendar-days-row {
+  width: 90%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.calendar-days-row
+h1,h2,h3,h4 {
+  font-weight: 400;
+}
+
+/* text size relative to parent */
+.subtext-big {
+  font-size: .8em;
+}
+
+.float-right {
+  float: right;
+}
+
+/* big container */
+
+.calendar-day--container * {
+  padding-left: 1rem;
+  padding-block: .3em;
+}
+
+.calendar-day--container * span {
+  padding-right: 1rem;
+}
+
+.calendar-day--container:last-child span {
+  padding-bottom: .2rem;
+}
+
+.calendar-day--container {
+  background-color: #323232;
+}
+
+.calendar-day--container:nth-child(2) {
+  background-color: #505050;
+
+  border-radius: 0 5px 0 0;
+}
+
+.calendar-day--container:nth-child(4) {
+  border-radius: 0 0 0 5px;
+}
+
+.calendar-day--container:nth-child(5) {
+  background-color: #505050;
+}
+
+.calendar-day--container:nth-child(7) {
+  background-color: #505050;
+
+  border-radius: 0 0 5px 0;
+}
+
+.container-big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.container-big h2,h3 {
+  padding-block: 1.1em;
+}
+
+
+.container-med {
+  grid-column: span 2;
+}
+
+.container-smol {
+  padding-bottom: .5rem;
+}
+
+.container-smol h2 {
+  padding-bottom: 1.2em;
+}
+
+/* medium container */
+
+/* .calendar-day-med--container {
+  padding-bottom: .2rem;
+}
+
+.calendar-day-med--container * {
+  padding-left: 1rem;
+  padding-block: .3em;
+}
+
+.calendar-day-med--container * span {
+  padding-right: 1rem;
+}
+
+.calendar-day--container:last-child span {
+  padding-bottom: .2rem;
+} */
+
+/* smol container */
+
+/* .calendar-day-smol--container {
+  padding-bottom: .2rem;
+}
+
+.calendar-day-smol--container * {
+  padding-left: 1rem;
+  padding-block: .3em;
+}
+
+.calendar-day-smol--container * span {
+  padding-right: 1rem;
+}
+
+.calendar-day-smol--container:last-child span {
+  padding-bottom: .2rem;
+} */

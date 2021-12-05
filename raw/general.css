@@ -145,6 +145,14 @@ body {
   text-align: center;
 }
 
+/* creates this effent when text overflows the container */
+/* this is a c... */
+.text--overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 
 
 /* GENERAL MARGIN PADDING PREFIXES */
@@ -209,8 +217,8 @@ body {
   display: inline;
   border-radius: 5px;
 
-  padding: 0.2rem;
-  padding-inline: .8rem;
+  padding: .4rem;
+  padding-inline: 1.3rem;
 }
 
 .button-switch {
@@ -229,15 +237,15 @@ body {
   z-index: 1;
 
   border-radius: 5px;
-  padding: .2rem;
-  padding-inline: .8rem;
+  padding: .4rem;
+  padding-inline: 1.3rem;
 }
 
 .button-switch--unchecked {
 
   border-radius: 5px;
-  padding: .2rem;
-  padding-inline: .8rem;
+  padding: .4rem;
+  padding-inline: 1rem;
 }
 
 .button-switch:hover,
