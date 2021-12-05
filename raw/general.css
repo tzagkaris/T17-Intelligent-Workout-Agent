@@ -4,10 +4,24 @@
   src: url('./../raw/fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf');
 }
 
+@font-face {
+  font-family: RedHatDisplayItalics;
+  src: url('./../raw/fonts/Red_Hat_Display/RedHatDisplay-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('./../raw/fonts/Roboto/Roboto-Regular.ttf');
+}
+
 /* SETTING DEFAULTS !!! */
 
 body {
   font-family: RedHatDisplay;
+}
+
+.font--Roboto {
+  font-family: Roboto;
 }
 
 /* SETTING UTILITY CLASSES */
@@ -19,7 +33,8 @@ body {
 .header-3,
 .header-4,
 .para-1,
-.para-2 {
+.para-2,
+h1, h2, h3, h4, h5 {
   font-weight: 400;
 }
 
@@ -45,6 +60,11 @@ body {
 
 .para-1 {
   font-size: 1.25rem;   /* 20px */
+}
+
+/* added later */
+.para-25 {
+  font-size: 1.1rem;   /* 18px */
 }
 
 .para-2 {
@@ -100,7 +120,7 @@ body {
   color: #EDECEC;
 }
 
-.color-br--shade--dark {
+.color-br--shade--darkest {
   background-color: #323232;
 }
 
@@ -145,6 +165,18 @@ body {
   text-align: center;
 }
 
+.text--italics {
+  font-style: italic;
+}
+
+/* creates this effent when text overflows the container */
+/* this is a c... */
+.text--overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 
 
 /* GENERAL MARGIN PADDING PREFIXES */
@@ -182,6 +214,68 @@ body {
   padding-bottom: 1rem;
 }
 
+/* add this to make an element change pointer when clicked */
+
+.clickable-card:hover {
+  cursor: pointer;
+}
+
+/* BUTTONS ( no background color or text color specified ) */
+
+/* wide button */
+.button-prim {
+  display: inline;
+  border-radius: 5px;
+
+  padding: .4rem;
+  padding-inline: 1.3rem;
+}
+
+.button-switch {
+  display: inline;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  column-gap: .2rem;
+}
+
+.button-switch--checked {
+
+  z-index: 1;
+
+  border-radius: 5px;
+  padding: .4rem;
+  padding-inline: 1.3rem;
+}
+
+.button-switch--unchecked {
+
+  border-radius: 5px;
+  padding: .4rem;
+  padding-inline: 1rem;
+}
+
+.button-switch:hover,
+.button-switch--checked:hover,
+.button-switch--unchecked:hover {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* a container to center the component in the center for easy viewing */
@@ -195,10 +289,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.clickable-card:hover {
-  cursor: pointer;
-}
-
-
-
