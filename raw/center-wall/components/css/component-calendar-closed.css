@@ -66,10 +66,7 @@ h1,h2,h3,h4 {
 
 .calendar-day--container * span {
   padding-right: 1rem;
-}
-
-.calendar-day--container:last-child span {
-  padding-bottom: .2rem;
+  padding-bottom: .1em;
 }
 
 .calendar-day--container {
@@ -101,8 +98,12 @@ h1,h2,h3,h4 {
   grid-row: span 2;
 }
 
-.container-big h2,h3 {
-  padding-block: 1.1em;
+.container-big .main {
+  padding-block: 0.7em;
+}
+
+.container-big .sub {
+  padding-block: 0.5em;
 }
 
 
