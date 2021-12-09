@@ -1,0 +1,96 @@
+.black-box-container{
+    background-color: #323232;
+    padding: 5px;
+}
+
+.width600{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.funfacts {
+    background-color: #323232;
+    padding: 5px;
+    width: 544px;
+}
+
+.graybox {
+    background-color: #505050;
+    padding: 5px;
+    margin: 0px 60px 50px 60px;
+}
+
+.icons-boxes-contairer {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 22px;
+}
+
+.lightgraybox {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 22px;
+}
+
+
+.funfactwords {
+    margin: auto 15px;
+}
+
+.recycle {
+    margin: auto 15px;
+}
+
+.funfacts h1 {
+    margin: 32px 60px 16px 60px;
+}
+
+.performance-box-contairer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 60px ;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.exercise-box {
+    display: flex;
+    margin: 6px 11px;
+}
+
+.exercise-box h3 {
+    align-self: baseline;
+    margin-left: 6px;
+}
+
+.performance {
+    width: 544px;
+}
+
+.max-box h4 {
+    margin-right: 6px;
+}
+
+.telitses {
+    border-radius: 0px 0px 5px 5px;
+    margin: 0px 60px 50px;
+}
+.telitses h1 {
+    margin-top: 0px  !important;
+}
+
+.performance h1 {
+    margin: 32px 60px 16px 60px;
+}
+
+section.performance-funfacts-container {
+    display: flex;
+    justify-content: center;
+}
+
+.performance.black-box-container.round-corners--primary.frame-shadow--primary {
+    margin: 70px 35px;
+}
+
+.funfacts.black-box-container.round-corners--primary.frame-shadow--primary {
+    margin: 70px 35px;
+}
