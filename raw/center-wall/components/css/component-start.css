@@ -1,7 +1,7 @@
 .start-component-container {
   width: 570px;
   height: 790px;
-  background-image: url('./../assets/background-component--start.png');
+  background-image: url('./../../../assets/background-component--start.png');
 
   display: flex;
   flex-direction: column;

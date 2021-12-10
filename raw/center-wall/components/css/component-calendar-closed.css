@@ -2,7 +2,7 @@
   width: 920px;
   height: 520px;
 
-  background-image:url('./../assets/background-component-calendar-closed.png');
+  background-image:url('./../../../assets/background-component-calendar-closed.png');
 
   display: flex;
   flex-direction: column;
