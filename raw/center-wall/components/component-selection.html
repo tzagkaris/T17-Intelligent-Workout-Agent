@@ -11,27 +11,130 @@
 <body>
   <!-- do not include in angular elements with data-include="no" tag-->
   <div class="show-container" id="no-include" data-include="no">
-    <div class="selection-container round-corners--primary frame-shadow--primary">
+    <div class="selection-container round-corners--primary frame-shadow--primary padding-bottom-3">
       <div class="close-container">
-        <img class="close-mark frame-shadow--primary" src="./../../assets/triangle-close.svg" alt="close icon">
+        <img class="close-mark frame-shadow--primary clickable-card" src="./../../assets/triangle-close.svg" alt="close icon">
       </div>
       <div class="selection-header">
         <h1 class="header-1 padding-in-1 color-text--swhite">Workouts</h1>
         <div class="button-selection-group color-br--swhite margin-in-1">
-            <h3 class="header-2 pm-0 button-switch--checked color-br--shade--dark color-text--swhite">Focus</h3>
-            <h3 class="header-2 pm-0 button-switch--unchecked color-text--shade--darkest">Intense</h3>
-            <h3 class="header-2 pm-0 button-switch--unchecked color-text--shade--darkest">Wellness</h3>
+            <h3 class="header-2 pm-0 button-switch--checked color-br--shade--dark color-text--swhite clickable-card">Focus</h3>
+            <h3 class="header-2 pm-0 button-switch--unchecked color-text--shade--darkest clickable-card">Intense</h3>
+            <h3 class="header-2 pm-0 button-switch--unchecked color-text--shade--darkest clickable-card">Wellness</h3>
         </div>
       </div>
-      <div class="selection-searchbar color-br--shade--dark round-corners--primary">
+      <div class="selection-searchbar color-br--shade--dark round-corners--primary margin-bottom-1">
         <div class="selection-searchbox">
           <input class="search-box margin-in-1 header-3 padding-in-1 color-text--shade--darkest" type="text" placeholder="Search...">
         </div>
-        <div class="mic-icon-container">
+        <div class="mic-icon-container clickable-card">
           <img src="./../../assets/mic-icon.svg" alt="mic icon">
         </div>
       </div>
 
+      <div class="exersice-list--container overflow-y">
+
+        <div class="exersice-list--entry clickable-card round-corners--primary color-text--swhite">
+          <div class="entry--left">
+            <div class="number-container round-corners--primary color-br--shade--medium">
+              <h3 class="pm-0 title-1">1</h3>
+            </div>
+            <div class="hardness-container round-corners--primary">
+              <h4 class="pm-0 header-2">M</h4>
+            </div>
+          </div>
+          <div class="entry--right">
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Chest</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Push Ups, Bench Press, Butterfly</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Triceps</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Dips, Extensions with bar, Wall Slides</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Core</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Crunches, Hollow hold</h5>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="exersice-list--entry clickable-card round-corners--primary color-text--swhite color-br--shade--dark">
+          <div class="entry--left">
+            <div class="number-container round-corners--primary color-br--shade--medium">
+              <h3 class="pm-0 title-1">2</h3>
+            </div>
+            <div class="hardness-container round-corners--primary">
+              <h4 class="pm-0 header-2">M</h4>
+            </div>
+          </div>
+          <div class="entry--right">
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Chest</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Push Ups, Bench Press, Butterfly</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Biceps</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Barbel Curls, Chin Ups, Hammercurls</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Core</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Crunches, Hollow cycling</h5>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="exersice-list--entry clickable-card round-corners--primary color-text--swhite">
+          <div class="entry--left">
+            <div class="number-container round-corners--primary color-br--shade--medium">
+              <h3 class="pm-0 title-1">3</h3>
+            </div>
+            <div class="hardness-container round-corners--primary">
+              <h4 class="pm-0 header-2">E</h4>
+            </div>
+          </div>
+          <div class="entry--right">
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Biceps</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Barbel Curls, Chin Ups, Hammercurls</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Triceps</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Dips, Extensions with bar, Wall Slides</h5>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="exersice-list--entry clickable-card round-corners--primary color-text--swhite color-br--shade--dark">
+          <div class="entry--left">
+            <div class="number-container round-corners--primary color-br--shade--medium">
+              <h3 class="pm-0 title-1">4</h3>
+            </div>
+            <div class="hardness-container round-corners--primary">
+              <h4 class="pm-0 header-2">E</h4>
+            </div>
+          </div>
+          <div class="entry--right">
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Chest</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Push Ups, Bench Press, Press Incline</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Shoulders</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Bear Walk, Front raises, Shrugs</h5>
+            </div>
+            <div class="entry--info">
+              <h4 class="entry-m pm-0 header-2 padding-in-1">Quadriceps</h4>
+              <h5 class="entry-s pm-0 header-4 margin-left-auto padding-in-1">Braced Squats, Jumping jacks</h5>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </body>

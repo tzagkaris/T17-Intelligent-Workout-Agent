@@ -226,6 +226,23 @@ h1, h2, h3, h4, h5 {
   padding-bottom: 1rem;
 }
 
+.padding-bottom-3 {
+  padding-bottom: 2.5rem;
+}
+
+.margin-bottom-1 {
+  margin-bottom: .6rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: .9rem;
+}
+
+/* push a flex element to the right */
+.margin-left-auto {
+  margin-left: auto;
+}
+
 /* add this to make an element change pointer when clicked */
 
 .clickable-card:hover {
@@ -276,7 +293,10 @@ h1, h2, h3, h4, h5 {
   cursor: pointer;
 }
 
-
+/* for this to work div must have a set height */
+.overflow-y {
+  overflow-y: auto;
+}
 
 
 
