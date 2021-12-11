@@ -1,0 +1,67 @@
+.coming-container {
+  background-image: url('./../../../assets/background-component-comming-up.png');
+
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+}
+
+.coming-title {
+  display: block;
+  width: 90%;
+}
+
+.exersice-list {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+
+  height: 450px;
+  overflow-y: auto;
+
+  gap: .4rem;
+}
+
+.exersice-entry {
+  position: relative;
+
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: .6rem;
+
+}
+
+
+.workoutcount-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 27px;
+  height: 27px;
+
+  text-align: center;
+
+  border-radius: 0 5px 0 5px;
+}
+
+.workoutinfo-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

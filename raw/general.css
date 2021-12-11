@@ -223,6 +223,10 @@ h1, h2, h3, h4, h5 {
   padding-block: .9rem;
 }
 
+.padding-in-05 {
+  padding-inline: .4rem;
+}
+
 .padding-in-1 {
   padding-inline: .6rem;
 }
@@ -274,6 +278,10 @@ h1, h2, h3, h4, h5 {
 
 .align-self-end {
   align-self: flex-end;
+}
+
+.align-self-start {
+  align-self: flex-start;
 }
 
 .justify-self-end {
