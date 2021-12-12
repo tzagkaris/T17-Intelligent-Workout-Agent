@@ -9,7 +9,7 @@
 }
 
 .funfacts {
-    background-color: #323232;
+    background-image: url("./../assets/funfactsbackground.png");
     padding: 5px;
     width: 544px;
 }
@@ -54,16 +54,19 @@
 
 .exercise-box {
     display: flex;
+    align-items: center;
     margin: 6px 11px;
+    flex: 0 0 66%;
 }
 
 .exercise-box h3 {
-    align-self: baseline;
-    margin-left: 6px;
+    margin: 0px 0px 0px 6px;
+    
 }
 
 .performance {
     width: 544px;
+    background-image: url("./../assets/performancebackground.png");
 }
 
 .max-box h4 {
@@ -94,3 +97,47 @@ section.performance-funfacts-container {
 .funfacts.black-box-container.round-corners--primary.frame-shadow--primary {
     margin: 70px 35px;
 }
+
+.icon-box h3 {
+    margin: 0;
+}
+
+.statistics h1, h3 {
+    margin: auto;
+}
+
+.main-box{
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 35px 0px 35px;
+    background-image: url("./../assets/mainbox.png");
+    width: 1167px;
+}
+
+.calories-box{
+    display: flex;
+    margin: 50px;
+    justify-content: space-evenly;
+}
+
+.calories-box img {
+    align-self: center;
+    padding: 7px;
+}
+
+.stat-box h1 {
+    padding-bottom: 6px;
+    border-bottom: 1px solid gray;
+    margin: 0px;
+}
+
+.stat-box {
+    padding: 8px;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
