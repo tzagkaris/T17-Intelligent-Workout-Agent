@@ -31,12 +31,14 @@ interface IExercise {
 
 export class OnExersiceLogic {
 
+  /* this is the array of exercises */
   public exerciseArray: IExercise[] = [
     { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8] },
     { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8] , optional: { weightUsed: []} },
     { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60 },
   ];
 
+  /* this is the current status */
   public status: IStatus = {
     currExercise: this.exerciseArray[0],
     exerciseNo: 0,
@@ -44,6 +46,11 @@ export class OnExersiceLogic {
     currRep: 0,
     condition: "ongoing",
   };
+
+  public getExersiceArray = (req: Request, res: Response, next: NextFunction) => {
+
+    res.send(this.exerciseArray);
+  }
 
   public getState = (req: Request, res: Response, next: NextFunction) => {
     // if error call next(new Error("error desc")) in order to call the function bellow

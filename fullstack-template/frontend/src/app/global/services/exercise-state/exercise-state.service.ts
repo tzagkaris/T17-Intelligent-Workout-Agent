@@ -27,4 +27,9 @@ export class ExerciseStateService {
 
     return this.http.delete(`${this.hostURI}/api/exercise/reset`);
   }
+
+  public getExersiceArray() {
+
+    return this.http.get(`${this.hostURI}/api/exercise/exersices`);
+  }
 }

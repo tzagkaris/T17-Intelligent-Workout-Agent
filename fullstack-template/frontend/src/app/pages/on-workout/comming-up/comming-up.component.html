@@ -3,70 +3,22 @@
   <h1 class="coming-title title-1 color-text--swhite">Up Next</h1>
 
   <div class="exersice-list">
-    <div class="exersice-entry round-corners--primary color-br--shade--dark">
+
+
+
+    <div class="exersice-entry round-corners--primary color-br--shade--dark" *ngFor="let entry of finalArray">
       <div class="image-cont">
         <img src="./../../assets/bicepcurls.png" alt="exersice specific ( Hammer Curls ) icon">
       </div>
       <div class="workoutcount-container color-br--swhite">
-        <h2 class="pm-0 header-4">4</h2>
+        <h2 class="pm-0 header-4">{{ entry.index + 1 }}</h2>
       </div>
-      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">Hammer Curls</h2>
+      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">{{ entry.name }}</h2>
       <div class="workoutinfo-container">
-        <h2 class="pm-0 padding-in-05 color-text--swhite">3 x 12 - 10 - 8</h2>
+        <h2 class="pm-0 padding-in-05 color-text--swhite">{{ entry.rs }}</h2>
       </div>
     </div>
 
-    <div class="exersice-entry round-corners--primary">
-      <div class="image-cont">
-        <img src="./../../assets/dips.png" alt="exersice specific ( dips ) icon">
-      </div>
-      <div class="workoutcount-container color-br--swhite">
-        <h2 class="pm-0 header-4">5</h2>
-      </div>
-      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">Dips between 2 benches</h2>
-      <div class="workoutinfo-container">
-        <h2 class="pm-0 padding-in-05 color-text--swhite">4 x 12</h2>
-      </div>
-    </div>
-
-    <div class="exersice-entry round-corners--primary color-br--shade--dark">
-      <div class="image-cont">
-        <img src="./../../assets/tricep-kickbacks.png" alt="exersice specific ( dips ) icon">
-      </div>
-      <div class="workoutcount-container color-br--swhite">
-        <h2 class="pm-0 header-4">6</h2>
-      </div>
-      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">Tricep Dumbell Kickbacks</h2>
-      <div class="workoutinfo-container">
-        <h2 class="pm-0 padding-in-05 color-text--swhite">3 x 8</h2>
-      </div>
-    </div>
-
-    <div class="exersice-entry round-corners--primary">
-      <div class="image-cont">
-        <img src="./../../assets/tricep-pushups.png" alt="exersice specific ( dips ) icon">
-      </div>
-      <div class="workoutcount-container color-br--swhite">
-        <h2 class="pm-0 header-4">7</h2>
-      </div>
-      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">Close Tricep Pushups</h2>
-      <div class="workoutinfo-container">
-        <h2 class="pm-0 padding-in-05 color-text--swhite">4 x 10 - 10 - 8 - 8</h2>
-      </div>
-    </div>
-
-    <div class="exersice-entry round-corners--primary color-br--shade--dark">
-      <div class="image-cont">
-        <img src="./../../assets/tricep-pushups.png" alt="exersice specific ( dips ) icon">
-      </div>
-      <div class="workoutcount-container color-br--swhite">
-        <h2 class="pm-0 header-4">8</h2>
-      </div>
-      <h2 class="align-self-start pm-0 header-2 color-text--swhite padding-in-2">Temp</h2>
-      <div class="workoutinfo-container">
-        <h2 class="pm-0 padding-in-05 color-text--swhite">4 x 10 - 10 - 8 - 8</h2>
-      </div>
-    </div>
 
   </div>
 
