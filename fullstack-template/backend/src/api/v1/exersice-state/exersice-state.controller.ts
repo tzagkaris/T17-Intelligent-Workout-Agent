@@ -14,6 +14,8 @@ export class ExersiceStateController {
 
     router.delete('/reset', this.logic.resetState, this.logic.getStateOnError);
 
+    router.get('/exersices', this.logic.getExersiceArray, this.logic.getStateOnError);
+
     return router;
   }
 }

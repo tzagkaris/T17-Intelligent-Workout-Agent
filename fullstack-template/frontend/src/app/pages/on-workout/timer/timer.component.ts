@@ -32,7 +32,7 @@ export class TimerComponent implements OnInit, AfterViewInit {
 
     /* disable all things from running */
     /* COMMENT THIS LINE FOR DEMO PERPOSES */
-    if(!this.debugSelective) return;
+    //if(!this.debugSelective) return;
 
     /* get the real time showing on the clock */
     this.clockCounter();
