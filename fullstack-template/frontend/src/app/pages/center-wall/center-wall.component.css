@@ -1,0 +1,16 @@
+body {
+  background-image: url('./../../../assets/background-center-wall.png');
+
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: flex-start;
+}
+
+.cal-closed {
+  margin-top: auto;
+}
