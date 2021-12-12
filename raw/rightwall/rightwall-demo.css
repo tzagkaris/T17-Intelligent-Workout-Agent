@@ -1,0 +1,111 @@
+.videos-container {
+    display: flex;
+    flex-direction: column;
+    background-image: url(./../assets/background1.png);
+    height: 958px;
+    width: 1120px;
+}
+.videos-container h1 {
+    margin: 60px 50px 14px 39px;
+}
+
+
+.video img{
+    max-width: 55px;
+    max-height: 55px;
+    margin: 0px 10px 3px 10px;
+}
+
+.v1{
+    background-image: url(./../assets/video1.png);
+}
+.v2{
+    background-image: url(./../assets/video2.png);
+}
+.v3{
+    background-image: url(./../assets/video3.png);
+}
+
+.v4{
+    background-image: url(./../assets/video4.png);
+}
+.v5{
+    background-image: url(./../assets/video5.png);
+}
+.v6{
+    background-image: url(./../assets/video6.png);
+}
+
+.v7{
+    background-image: url(./../assets/video7.png);
+}
+.v8{
+    background-image: url(./../assets/video8.png);
+}
+.v9{
+    background-image: url(./../assets/video9.png);
+}
+
+.video {
+    background-repeat: no-repeat;
+    display: flex;
+    width: 300px;
+    height: 175px;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.trainer-title {
+    display: flex;
+    
+}
+
+.video h4 {
+    margin: 0px 2px;
+}
+
+p.para-2.color-text--swhite {
+    text-align: end;
+    margin-top: -15px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+
+.videos-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.music-box {
+    width: 504px;
+    height: 714px;
+    background-image: url(./../assets/background2.png);
+}
+
+
+.music-player-container {
+    margin: 60px 60px;
+}
+
+.disc-area {
+    display: flex;
+    background-color: gray;
+}
+
+.disc-info {
+    align-self: center;
+}
+
+.disc-area {
+    display: flex;
+    background: linear-gradient(to right,  transparent  0%,transparent 15%,#505050 18%,#505050 100%);
+}
+
+.disc-area h5 {
+    align-self: self-end;
+}
+
+.icons-area, .icon1 img {
+    margin-left: 80px;
+    margin-right: 50px;
+}
