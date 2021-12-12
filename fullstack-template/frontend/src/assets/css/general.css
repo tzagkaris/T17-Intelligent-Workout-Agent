@@ -1,0 +1,372 @@
+/* importing the font ( found on the fonts folder ) */
+@font-face {
+  font-family: RedHatDisplay;
+  src: url('./../fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: RedHatDisplayItalics;
+  src: url('./../fonts/Red_Hat_Display/RedHatDisplay-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('./../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: DigitalNumbers;
+  src: url('./../fonts/digital-numbers-cufonfonts-webfont/DigitalNumbers-Regular.woff');
+}
+
+/* SETTING DEFAULTS !!! */
+
+body {
+  font-family: RedHatDisplay;
+}
+
+.font--Roboto {
+  font-family: Roboto;
+}
+
+.font-digital {
+  font-family: DigitalNumbers;
+}
+
+/* SETTING UTILITY CLASSES */
+
+/* FONTS */
+.title-1,
+.header-1,
+.header-2,
+.header-3,
+.header-4,
+.para-1,
+.para-2,
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
+}
+
+.timer-fsize {
+  font-size: 3.75rem;
+}
+
+.title-1 {
+  font-size: 2.5rem; /* 40px */
+}
+
+.header-1 {
+  font-size: 1.875rem; /* 30px */
+}
+
+.header-2 {
+  font-size: 1.563rem;  /* 25px */
+}
+
+.header-3 {
+  font-size: 1.375rem;  /* 22px */
+}
+
+.header-4 {
+  font-size: 1.25rem;   /* 20px */
+}
+
+.para-1 {
+  font-size: 1.25rem;   /* 20px */
+}
+
+/* added later */
+.para-25 {
+  font-size: 1.1rem;   /* 18px */
+}
+
+.para-2 {
+  font-size: 0.938rem;  /* 15px */
+}
+
+/* COLORS */
+
+/* flurescent */
+.color-text--flurescent--red {
+  color: #D92525;
+}
+
+.color-br--flurescent--red {
+  background-color: #D92525;
+}
+
+/* suggary white */
+.color-text--swhite {
+  color: #F7F7F7;
+}
+
+.color-br--swhite {
+  background-color: #F7F7F7;
+}
+
+/* shades */
+.color-text--shade--darkest {
+  color: #323232;
+}
+
+.color-text--shade--dark {
+  color: #505050;
+}
+
+.color-text--shade--medium {
+  color: #777777;
+}
+
+.color-text--shade--light {
+  color: #9D9D9D;;
+}
+
+.color-text--shade--lighter {
+  color: #BEBEBE;
+}
+
+.color-text--shade--lightest {
+  color: #D8D8D8;
+}
+
+.color-text--shade--nearWhite {
+  color: #EDECEC;
+}
+
+.color-br--shade--darkest {
+  background-color: #323232;
+}
+
+.color-br--shade--dark {
+  background-color: #505050;
+}
+
+.color-br--shade--medium {
+  background-color: #777777;
+}
+
+.color-br--shade--light {
+  background-color: #9D9D9D;;
+}
+
+.color-br--shade--lighter {
+  background-color: #BEBEBE;
+}
+
+.color-br--shade--lightest {
+  background-color: #D8D8D8;
+}
+
+.color-br--shade--nearWhite {
+  background-color: #EDECEC;
+}
+
+
+/* general attributes that should be used everywhere */
+
+.round-corners--primary {
+  border-radius: 5px;
+}
+
+.frame-shadow--primary {
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.69));
+}
+
+
+/* GENERAL TEXT STYLING */
+.text--centered {
+  text-align: center;
+}
+
+.text--italics {
+  font-style: italic;
+}
+
+/* creates this effent when text overflows the container */
+/* this is a c... */
+.text--overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+
+/* GENERAL MARGIN PADDING PREFIXES */
+
+.padding-left-1 {
+  padding-left: 2rem !important;
+}
+
+.pm-0 {
+  padding: 0;
+  margin: 0;
+}
+
+.padding-1 {
+  padding: .5rem;
+}
+
+.padding-2 {
+  padding: 1rem;
+}
+
+.padding-top-1 {
+  padding-top: .6rem;
+}
+
+.padding-top-2 {
+  padding-top: .9rem;
+}
+
+.padding-bl-1 {
+  padding-block: .6rem;
+}
+
+.padding-bl-2 {
+  padding-block: .9rem;
+}
+
+.padding-in-05 {
+  padding-inline: .4rem;
+}
+
+.padding-in-1 {
+  padding-inline: .6rem;
+}
+
+.padding-in-2 {
+  padding-inline: .9rem;
+}
+
+.margin-in-1 {
+  margin-inline: .6rem;
+}
+
+.margin-top-1 {
+  margin-top: 2rem;
+}
+
+.margin-top-2 {
+  margin-top: 4rem;
+}
+
+.padding-bottom-1 {
+  padding-bottom: 1rem;
+}
+
+.padding-bottom-3 {
+  padding-bottom: 2.5rem;
+}
+
+.padding-bottom-2 {
+  padding-bottom: .6rem;
+}
+
+.margin-bottom-1 {
+  margin-bottom: .6rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: .9rem;
+}
+
+.margin-left-05 {
+  margin-left: .2rem;
+}
+
+/* push a flex element to the right */
+.margin-left-auto {
+  margin-left: auto;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+
+.justify-self-end {
+  justify-self: flex-end;
+}
+
+/* add this to make an element change pointer when clicked */
+
+.clickable-card:hover {
+  cursor: pointer;
+}
+
+/* BUTTONS ( no background color or text color specified ) */
+
+/* wide button */
+.button-prim {
+  display: inline;
+  border-radius: 5px;
+
+  padding: .4rem;
+  padding-inline: 1.3rem;
+}
+
+.button-switch {
+  display: inline;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  column-gap: .2rem;
+}
+
+.button-switch--checked {
+
+  z-index: 1;
+
+  border-radius: 5px;
+  padding: .4rem;
+  padding-inline: 1.3rem;
+}
+
+.button-switch--unchecked {
+
+  border-radius: 5px;
+  padding: .4rem;
+  padding-inline: 1rem;
+}
+
+.button-switch:hover,
+.button-switch--checked:hover,
+.button-switch--unchecked:hover {
+  cursor: pointer;
+}
+
+/* for this to work div must have a set height */
+.overflow-y {
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* a container to center the component in the center for easy viewing */
+/* use in raw only */
+.show-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+}
