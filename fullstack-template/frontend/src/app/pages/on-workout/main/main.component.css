@@ -1,0 +1,62 @@
+
+
+
+
+.video-player-container {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+.video-player-header {
+  background-color: #323232;
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 5px 5px 0 0;
+}
+
+.video-player-footer {
+  background-color: #323232;
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 0 0 5px 5px;
+}
+
+.overlay {
+
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}

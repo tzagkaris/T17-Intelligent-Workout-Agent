@@ -1,0 +1,7 @@
+body {
+  background-image: url('./../../../assets/background-center-wall.png');
+}
+
+.align-center {
+  align-items: center;
+}

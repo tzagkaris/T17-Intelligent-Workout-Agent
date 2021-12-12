@@ -347,7 +347,34 @@ h1, h2, h3, h4, h5 {
   overflow-y: auto;
 }
 
+/* use to setup a screen in angular */
+.page-flex-container {
+  width: 90%;
+  height: 90%;
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+
+  justify-content: center;
+
+  gap: 5rem;
+  padding: 5rem;
+}
+
+.page-body {
+
+  display: flex;
+  flex-direction: column;
+
+  align-content: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 100vh;
+  min-height: 100vh;
+}
 
 
 

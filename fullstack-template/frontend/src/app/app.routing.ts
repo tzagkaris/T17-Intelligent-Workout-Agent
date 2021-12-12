@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'on-workout', loadChildren: () => import('./pages/on-workout/on-workout.module').then(m => m.OnWorkoutModule) },
   { path: 'center-wall', loadChildren: () => import('./pages/center-wall/center-wall.module').then(m => m.CenterWallModule) },
   { path: 'deb', loadChildren: () => import('./pages/deb/deb.module').then(m => m.DebModule) },
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
