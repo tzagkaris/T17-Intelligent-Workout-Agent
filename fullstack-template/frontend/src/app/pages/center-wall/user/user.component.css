@@ -4,7 +4,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
 
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 
   column-gap: 1.75rem;
@@ -16,7 +16,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
 
-  align-items: end;
+  align-items: flex-end;
   padding-block: .2rem;
 }
 
