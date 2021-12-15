@@ -80,11 +80,13 @@ p.para-2.color-text--swhite {
     width: 504px;
     height: 714px;
     background-image: url(./../assets/background2.png);
+    align-self: center;
+    margin-left: 61px;
 }
 
 
 .music-player-container {
-    margin: 60px 60px;
+    margin: 0px  60px;
 }
 
 .disc-area {
@@ -94,18 +96,136 @@ p.para-2.color-text--swhite {
 
 .disc-info {
     align-self: center;
+    margin: 0px 8px;  
 }
 
 .disc-area {
     display: flex;
     background: linear-gradient(to right,  transparent  0%,transparent 15%,#505050 18%,#505050 100%);
+    border-radius: 0px 5px 0px 0px;
 }
 
 .disc-area h5 {
     align-self: self-end;
+    margin: revert;
+    margin-right: auto;
 }
 
 .icons-area, .icon1 img {
-    margin-left: 80px;
-    margin-right: 50px;
+    margin-left: 37px;
+    margin-right: 75px;
+}
+
+.icons-area img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.small-singer{
+    font-size: 10px;
+    font-weight: lighter;
+}
+
+.next-songs-container {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.time {
+    display: flex;
+}
+
+.time h4 {
+    align-self: center;
+    margin: 6px;
+}
+
+.time img {
+    max-width: 24px;
+    max-height: 24px;
+    align-self: center;
+    margin-right: 11px;
+}
+
+.song-name {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 0px 11px;
+}
+
+.telitses {
+    text-align: center;
+    margin-top: -20px;
+}
+
+.leftside span {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.leftside h4 {
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0;
+}
+
+.leftside {
+    display: flex;
+    margin-left: 21px;
+}
+
+.leftside img {
+    max-width: 35px;
+    align-self: center;
+    max-height: 27px;
+    margin-right: 5px;
+}
+
+
+.rightside h4 {
+    margin-bottom: 0;
+}
+.rightside {
+    display: flex;
+    margin-right: 13px;
+}
+
+.rightside img {
+    max-width: 35px;
+    align-self: center;
+    max-height: 27px;
+    margin-left: 5px;
+}
+
+.playlists-area {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.next-playlist {
+    text-align: center;
+}
+
+.prev-playlist {
+    text-align: center;
+    
+}
+
+.manage-playlists {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.righwall {
+    display: flex;
+    justify-content: center;
+    margin: 61px 0px;
+}
+
+body {
+    background-image: url(./../assets/rightwall-background.png);
+    background-repeat: no-repeat;
+    
 }
