@@ -1,0 +1,143 @@
+.black-box-container{
+  background-color: #323232;
+  padding: 5px;
+}
+
+.width600{
+  width: 600px;
+  margin: 0 auto;
+}
+
+.funfacts {
+  background-image: url("./../../../../assets/funfactsbackground.png");
+  padding: 5px;
+  width: 544px;
+}
+
+.graybox {
+  background-color: #505050;
+  padding: 5px;
+  margin: 0px 60px 50px 60px;
+}
+
+.icons-boxes-contairer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 22px;
+}
+
+.lightgraybox {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 22px;
+}
+
+
+.funfactwords {
+  margin: auto 15px;
+}
+
+.recycle {
+  margin: auto 15px;
+}
+
+.funfacts h1 {
+  margin: 32px 60px 16px 60px;
+}
+
+.performance-box-contairer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 60px ;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.exercise-box {
+  display: flex;
+  align-items: center;
+  margin: 6px 11px;
+  flex: 0 0 66%;
+}
+
+.exercise-box h3 {
+  margin: 0px 0px 0px 6px;
+
+}
+
+.performance {
+  width: 544px;
+  background-image: url("./../../../../assets/performancebackground.png");
+}
+
+.max-box h4 {
+  margin-right: 6px;
+}
+
+.telitses {
+  border-radius: 0px 0px 5px 5px;
+  margin: 0px 60px 50px;
+}
+.telitses h1 {
+  margin-top: 0px  !important;
+}
+
+.performance h1 {
+  margin: 32px 60px 16px 60px;
+}
+
+section.performance-funfacts-container {
+  display: flex;
+  justify-content: center;
+}
+
+.performance.black-box-container.round-corners--primary.frame-shadow--primary {
+  margin: 70px 35px;
+}
+
+.funfacts.black-box-container.round-corners--primary.frame-shadow--primary {
+  margin: 70px 35px;
+}
+
+.icon-box h3 {
+  margin: 0;
+}
+
+.statistics h1, h3 {
+  margin: auto;
+}
+
+.main-box{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 35px 0px 35px;
+  background-image: url("./../../../../assets/mainbox.png");
+  width: 1167px;
+}
+
+.calories-box{
+  display: flex;
+  margin: 50px;
+  justify-content: space-evenly;
+}
+
+.calories-box img {
+  align-self: center;
+  padding: 7px;
+}
+
+.stat-box h1 {
+  padding-bottom: 6px;
+  border-bottom: 1px solid gray;
+  margin: 0px;
+}
+
+.stat-box {
+  padding: 8px;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
