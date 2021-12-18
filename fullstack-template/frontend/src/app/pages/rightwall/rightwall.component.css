@@ -1,0 +1,15 @@
+.rightwall-flex {
+  display: flex;
+  justify-content: center;
+}
+music {
+  align-self: center;
+}
+body {
+  background-image: url(./../../../assets/rightwall-background.png);
+  background-repeat: no-repeat;
+  height: 1200px;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

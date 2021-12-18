@@ -1,0 +1,18 @@
+.main-box-flex {
+  display: flex;
+  justify-content: center;
+}
+.performance-funfacts-flex {
+  display: flex;
+  justify-content: center;
+}
+
+body{
+  background-image: url("./../../../assets/leftwallbackground.png");
+  background-repeat: no-repeat;
+  height: 1200px;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
