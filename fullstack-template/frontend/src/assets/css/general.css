@@ -182,6 +182,10 @@ h1, h2, h3, h4, h5 {
   font-style: italic;
 }
 
+.bold {
+  font-weight: 600;
+}
+
 /* creates this effent when text overflows the container */
 /* this is a c... */
 .text--overflow-ellipsis {

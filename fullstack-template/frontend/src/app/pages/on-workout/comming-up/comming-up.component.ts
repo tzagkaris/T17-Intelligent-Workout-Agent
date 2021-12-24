@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { isElement } from 'lodash';
 import { IExercise, IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
@@ -17,7 +18,8 @@ export interface IFinalEx {
 })
 export class CommingUpComponent implements AfterViewInit {
 
-  constructor(public exService: ExerciseStateService) {
+  constructor(public exService: ExerciseStateService,
+    private socketService: SocketsService) {
 
   }
 
@@ -29,13 +31,34 @@ export class CommingUpComponent implements AfterViewInit {
     './../../assets/bicepcurls.png'
   ]
 
+  allExercises: IExercise[] = [];
+
   ngAfterViewInit(): void {
 
     this.exService.getExersiceArray().subscribe(
       (result: IExercise[]) => {
+        this.allExercises = result;
         this.getFinalExersiceArray(result);
       }
     )
+
+    this.socketService.syncMessages("exercise-state").subscribe((msg) => {
+
+      if(!this.finalArray.length) {
+        setTimeout(() => {
+          this.filterFinalExersiceArray(msg.message);
+        }, 1000)
+      } else this.filterFinalExersiceArray(msg.message);
+
+    })
+  }
+
+  filterFinalExersiceArray = (state: IStatus) => {
+
+    this.finalArray.forEach(elem => {
+      if(elem.index <= state.exerciseNo)
+        this.finalArray = this.finalArray.filter(fl => fl.index != elem.index);
+    })
   }
 
   getFinalExersiceArray = (originalArray: IExercise[]) => {
@@ -56,14 +79,16 @@ export class CommingUpComponent implements AfterViewInit {
         elem.reps.forEach((rep) => {
           finalArrayEntry.rs = finalArrayEntry.rs.concat(`${rep} - `);
         })
+        /* remove the last 2 elements of the rs */
+        finalArrayEntry.rs = finalArrayEntry.rs.substring(0, finalArrayEntry.rs.length - 2);
       }
-      else {
-        finalArrayEntry.rs = "TODO";
+      else if(elem.sets && elem.countDownTimeInSecs){
+        finalArrayEntry.rs = `${elem.sets} x ${elem.countDownTimeInSecs} s`;
       }
 
       finalArrayEntry.imageRef = this.workoutImagePaths[index];
       finalArrayEntry.index = index;
-      
+
       this.finalArray.push(finalArrayEntry);
     })
 
