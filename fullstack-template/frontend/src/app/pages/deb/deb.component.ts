@@ -14,6 +14,7 @@ export class DebComponent implements OnInit {
 
   constructor(private exStateService: ExerciseStateService,
               private socketService: SocketsService) {
+
     this.currentExerciseState = {
       currExercise: { name: "No Data", type: "none"},
       exerciseNo: 0,
@@ -29,6 +30,7 @@ export class DebComponent implements OnInit {
       console.log(msg.message);
       this.currentExerciseState = msg.message;
     })
+
 
   }
 

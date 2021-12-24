@@ -2,19 +2,17 @@
 
   <div class="video-player-header padding-2">
     <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">Upper Body - M+</h1>
-    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">3 / 7</h1>
+    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite"> {{currStatus.exerciseNo + 1}} / 7</h1>
   </div>
 
-  <!-- this needs to be done better with javascript-->
-  <div class="overlay">
-    <img src="./../../assets/play-button.png" alt="play button">
+  <div class="vid-c" #vidContainer>
+    <video src="./../../assets/cactus.mp4" #videoPlayer (click)="startStopVideo()">
+    </video>
+    <h1 class="timer-fsize bold warmUpText color-text--flurescent--red" #warmUpText></h1>
   </div>
-
-  <video src="./../../assets/cactus.mp4">
-  </video>
 
   <div class="video-player-footer padding-2">
-    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">Bicep Curls</h1>
-    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">2 - 0</h1>
+    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">{{currStatus.currExercise.name}}</h1>
+    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite" #exSetRepInfo></h1>
   </div>
 </div>

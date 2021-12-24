@@ -23,8 +23,11 @@
         <img src="./../../assets/play-button.png" alt="play button">
       </div>
 
-      <video src="./../../assets/cactus.mp4">
-      </video>
+      <div class="vid-c">
+        <video src="./../../assets/cactus.mp4">
+        </video>
+        <h1 class="warmUpText text-centered">59 secs</h1>
+      </div>
 
       <div class="video-player-footer padding-2">
         <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">Bicep Curls</h1>
@@ -33,6 +36,10 @@
     </div>
 
   </div>
+  <script defer>
+    let video = document.querySelector('video')
+    video.style.filter = 'none';
+  </script>
 </body>
 </html>
 
