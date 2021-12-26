@@ -24,10 +24,6 @@
 
 }
 
-.box-setsize {
-
-}
-
 .header-2 {
   font-size: 1.5rem;
 }
@@ -48,12 +44,36 @@
   margin-top: 3rem;
 }
 
+.btn {
+  appearance: none;
+
+  padding: .3rem;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: rgb(163, 212, 89);
+}
+
+.btn-secondary {
+  background-color: rgb(209, 209, 209);
+}
+
 .btn-trid {
   background-color: goldenrod;
   border-color: goldenrod;
 }
 
 .btn-trid:hover {
+
   background-color: rgb(185, 142, 34);
   border-color: rgb(185, 142, 34);
+}
+
+.infoHeader {
+  text-align: center;
 }

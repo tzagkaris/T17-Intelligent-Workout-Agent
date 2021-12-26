@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
 
@@ -10,9 +11,10 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
 })
 export class VideoPlayerComponent implements AfterViewInit {
 
-  @Input() videoSource: String;
+  @Input() videoSource: Observable<String>;
   @Input() videoLoop: Boolean;
   @Input() canBeClosed: Boolean;
+
   @ViewChild('videoPlayer', {static: true}) videoPlayer: ElementRef;
   @ViewChild('videoControls', {static: true}) videoControls: ElementRef;
   @ViewChild('controlMute', {static: true}) controlMute: ElementRef;
@@ -27,7 +29,9 @@ export class VideoPlayerComponent implements AfterViewInit {
     let video = this.videoPlayer.nativeElement;
 
     // add video source as specified at @Input
-    video.setAttribute('src', this.videoSource);
+    this.videoSource.subscribe((src) => {
+      video.setAttribute('src', src);
+    })
 
     // mute and loop video by default
     video.muted = 1;

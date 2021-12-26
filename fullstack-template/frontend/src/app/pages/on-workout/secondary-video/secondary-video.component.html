@@ -6,11 +6,11 @@
   </div>
 
   <div class="vid-c" #vidContainer>
-    <video-player [canBeClosed]="true" [videoSource]="videoSource" [videoLoop]="false" (closeVideo)="removeVideo()"></video-player>
+    <video-player [canBeClosed]="true" [videoSource]="sourceEmitter.asObservable()" [videoLoop]="false" (closeVideo)="removeVideo()"></video-player>
   </div>
 
   <div class="video-player-footer padding-2">
-    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">Cactus meme full</h1>
+    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">{{videoName}}</h1>
   </div>
 
 </div>
