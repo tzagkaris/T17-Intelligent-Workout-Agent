@@ -10,6 +10,7 @@
   <div class="page-flex-container align-center">
     <timer></timer>
     <main></main>
+    <main-video *ngIf="ClosedState" (removeMe)="removeMediaVideo()"></main-video>
     <comming-up></comming-up>
   </div>
 </body>

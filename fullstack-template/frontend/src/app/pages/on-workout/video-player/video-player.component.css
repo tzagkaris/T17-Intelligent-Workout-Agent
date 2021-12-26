@@ -1,0 +1,53 @@
+
+
+.video-controls {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+  padding-block: 2rem;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.controls-on-load-animation {
+  animation-name: controls-on-load;
+  animation-duration: 1500ms;
+}
+
+@keyframes controls-on-load {
+  0% {
+    filter: blur(10px);
+  }
+
+  to {
+    filter: none;
+  }
+}
+
+.controls-on-exit-animation {
+  animation-name: controls-on-exit;
+  animation-duration: 1500ms;
+}
+
+
+@keyframes controls-on-exit {
+  from {
+    filter: none;
+  }
+
+  to {
+    filter: blur(10px);
+  }
+}
+
+.hide-me {
+  display: none;
+}
