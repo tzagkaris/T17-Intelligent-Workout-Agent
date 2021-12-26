@@ -1,0 +1,9 @@
+
+    <video src="" #videoPlayer (click)="toggleControls()">
+    </video>
+    <div class="video-controls frame-shadow--primary hide-me" #videoControls>
+        <img src="./../../../../assets/player-mute.svg" class="controls-on-load-animation" alt="player mute" (click)="muteUnmuteVideo()" #controlMute>
+        <img src="./../../../../assets/player-pause.svg" class="controls-on-load-animation" alt="player pause" (click)="startStopVideo()" #controlPause>
+        <img src="./../../../../assets/player-close.svg" class="controls-on-load-animation" alt="player close" (click)="onCloseVideo()" *ngIf="canBeClosed" #controlClose >
+      </div>
+

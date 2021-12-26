@@ -10,6 +10,10 @@
   <div class="page-flex-container align-center">
     <timer></timer>
     <main></main>
+
+    <!-- this is a dynamic player / gets "toggled" if needed be -->
+    <secondary-video *ngIf="ClosedState" [videoInfo]="videoInfoEmitter.asObservable()" (removeMe)="removeMediaVideo()"></secondary-video>
+
     <comming-up></comming-up>
   </div>
 </body>

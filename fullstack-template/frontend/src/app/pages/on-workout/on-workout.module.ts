@@ -5,6 +5,8 @@ import { TimerComponent } from './timer/timer.component';
 import { CommingUpComponent } from './comming-up/comming-up.component';
 import { MainComponent } from './main/main.component';
 import { OnWorkoutRoutingModule } from './on-workout.routing';
+import { MainVideoComponent } from './secondary-video/secondary-video.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { OnWorkoutRoutingModule } from './on-workout.routing';
     OnWorkoutComponent,
     TimerComponent,
     CommingUpComponent,
-    MainComponent
+    MainComponent,
+    MainVideoComponent,
+    VideoPlayerComponent
   ]
 })
 export class OnWorkoutModule { }
