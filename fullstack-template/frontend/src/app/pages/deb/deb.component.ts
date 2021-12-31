@@ -21,7 +21,7 @@ export class DebComponent implements OnInit, AfterViewInit {
   MIRROR_FRAMES_PER_SEC = 3;
 
   isStreaming: boolean = false;
-  outputWidth: number = 320;
+  outputWidth: number = 500;
   outputHeight: number = 0; /* this will be set depending on the aspect ratio of the camera */
   intervalRef: any = 0;
 
