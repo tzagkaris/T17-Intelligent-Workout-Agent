@@ -20,6 +20,22 @@ export class MediaController {
       this.logic.onError
     )
 
+    /* STREAM ROUTES */
+    router.post('/mirror',
+      this.logic.mirrorInit,
+      this.logic.onError
+    )
+
+    router.post('/mirror/update',
+    this.logic.mirrorUpdate,
+    this.logic.onError
+    )
+
+    router.delete('/mirror',
+      this.logic.mirrorClose,
+      this.logic.onError
+    )
+
     return router;
   }
 }

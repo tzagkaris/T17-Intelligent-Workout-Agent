@@ -9,6 +9,10 @@
 <body class="page-body">
   <div class="page-flex-container align-center">
     <timer></timer>
+
+    <!-- this in a dynamic mirror broadcaster / gets "toggled" if needed be -->
+    <mirror *ngIf="mirrorState" [bundle]="mirrorBundle" (removeMe)="removeMirror()"></mirror>
+
     <main></main>
 
     <!-- this is a dynamic player / gets "toggled" if needed be -->

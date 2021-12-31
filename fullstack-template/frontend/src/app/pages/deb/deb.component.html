@@ -44,6 +44,20 @@
       <div class="btn btn-primary" (click)="setSelected()">Set</div>
     </div>
 
+    <h2 class="infoHeader mar-block header-3">Mirror Playground.</h2>
+
+    <video  #vShow>Video not supported.</video>
+    <canvas #vCanvas id="canvas">
+    </canvas>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+      <div class="btn btn-primary" (click)="startShare()">Start Sharing</div>
+      <div class="btn btn-secondary"(click)="stopShare()">Stop Sharing</div>
+    </div>
+
+
+
+
   </div>
 
 </div>

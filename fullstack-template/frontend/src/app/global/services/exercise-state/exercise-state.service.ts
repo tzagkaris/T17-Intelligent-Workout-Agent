@@ -14,7 +14,6 @@ export class ExerciseStateService {
   }
 
   public fetchExerciseState() {
-
     return this.http.post(`${this.hostURI}/api/exercise/state`, { event: "exercise-state"});
   }
 

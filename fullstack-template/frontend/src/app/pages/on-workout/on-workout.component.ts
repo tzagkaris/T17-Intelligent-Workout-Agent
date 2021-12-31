@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { SocketsService } from 'src/app/global/services';
-import { MediaService } from 'src/app/global/services/media/media.service';
+import { IMirrorBundle, MediaService } from 'src/app/global/services/media/media.service';
 
 @Component({
   selector: 'on-workout',
@@ -14,6 +14,12 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
 
   ClosedState: boolean = true;
   videoInfoEmitter = new EventEmitter<any>();
+
+  /* MIRROR */
+  mirrorState: boolean = false;
+  mirrorBundle: IMirrorBundle = undefined;
+  mirrorDeviceName: string = 'Unset';
+
 
   constructor(private media: MediaService, private socketService: SocketsService) {}
 
@@ -30,6 +36,26 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
 
       this.ClosedState = true;
     })
+
+    /* Mirror */
+    this.socketService.syncMessages('mirror/state').subscribe((msg) => {
+
+      console.log(msg.message.command);
+      if(msg.message.command == 'open') {
+        this.mirrorBundle = msg.message;
+        this.mirrorDeviceName = 'mobile#1';
+
+        this.mirrorState = true;
+      }
+      else {
+        this.mirrorState = false;
+      }
+
+    })
+  }
+
+  removeMirror = () => {
+
   }
 
   removeMediaVideo = () => {

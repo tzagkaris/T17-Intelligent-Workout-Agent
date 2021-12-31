@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { OnWorkoutRoutingModule } from './on-workout.routing';
 import { MainVideoComponent } from './secondary-video/secondary-video.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { MirrorComponent } from './mirror/mirror.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
     CommingUpComponent,
     MainComponent,
     MainVideoComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    MirrorComponent
   ]
 })
 export class OnWorkoutModule { }
