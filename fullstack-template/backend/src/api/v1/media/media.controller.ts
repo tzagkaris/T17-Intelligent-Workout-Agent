@@ -55,7 +55,7 @@ export class MediaController {
       this.logic.onError
     )
 
-    router.get('/music/start',
+    router.get('/music/play',
       this.logic.startMusic,
       this.logic.onError
     )
