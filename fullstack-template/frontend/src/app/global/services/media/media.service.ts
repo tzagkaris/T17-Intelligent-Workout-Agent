@@ -24,7 +24,8 @@ export interface ISong {
 export interface IMusicState {
   'status' : string,
   'song' : ISong | undefined,
-  'index': number
+  'index': number,
+  'volume': number
 }
 
 @Injectable({
@@ -102,5 +103,10 @@ export class MediaService {
   public setTrackByName = (trackName: string) => {
 
     return this.http.post(`${this.hostURI}/api/media/music/song`, {name: trackName});
+  }
+
+  public setVolume = (newValue: number) => {
+
+    return this.http.post(`${this.hostURI}/api/media/music/volume`, {volume: newValue});
   }
 }

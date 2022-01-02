@@ -24,7 +24,8 @@ export interface ISong {
 export interface IMusicState {
   'status' : string,
   'song' : ISong | undefined,
-  'index': number
+  'index': number,
+  'volume': number
 }
 
 export class MediaLogic {
@@ -121,7 +122,8 @@ export class MediaLogic {
   musicState: IMusicState = {
     status: 'paused',
     song: undefined,
-    index: -1
+    index: -1,
+    volume: .2
   }
 
 
@@ -204,6 +206,20 @@ public getSongList = (req: Request, res: Response, next: NextFunction) => {
 
     this.musicState.index = newSongIndex;
     this.musicState.song = this.songsArray[this.musicState.index];
+    this.broadcastMusicState();
+    res.status(200).send();
+  }
+
+  public changeVolume = (req: Request, res: Response, next: NextFunction) => {
+
+    if(req.body.volume == undefined)
+      next('volumn not specified');
+
+    if(req.body.volume > 1 || req.body.volume < 0)
+      next('volumn out of bounds');
+
+    this.musicState.volume = req.body.volume;
+
     this.broadcastMusicState();
     res.status(200).send();
   }

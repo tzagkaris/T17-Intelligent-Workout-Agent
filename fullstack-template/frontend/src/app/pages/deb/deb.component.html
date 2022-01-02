@@ -50,6 +50,7 @@
       <li class="header-3">Music state: <span style="float: right; font-weight: 600;">{{musicState.status}}</span></li>
       <li class="header-3">Track Selected: <span style="float: right; font-weight: 600;">{{musicState.song.name}}</span></li>
       <li class="header-3">Track index: <span style="float: right; font-weight: 600;">{{musicState.index}}</span></li>
+      <li class="header-3">Volume: <span style="float: right; font-weight: 600;">{{musicState.volume}}</span></li>
     </ul>
 
     <div id="button-container" class="flex-row align-equal mar-top">
@@ -70,6 +71,16 @@
     <div id="button-container" class="flex-row align-equal mar-top">
       <div class="btn btn-primary" (click)="setMusicPlaying()">Play</div>
       <div class="btn btn-secondary" (click)="setMusicPaused()">Pause</div>
+
+      <select name="volumeSelection" id="volumeSelection" #volumeSelection>
+        <option value="0.2">20%</option>
+        <option value="0.4">40%</option>
+        <option value="0.6">60%</option>
+        <option value=".8">80%</option>
+        <option value="1">100%</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="changeVolume()">Set Vol</div>
     </div>
 
 
@@ -83,9 +94,6 @@
       <div class="btn btn-primary" (click)="startShare()">Start Sharing</div>
       <div class="btn btn-secondary"(click)="stopShare()">Stop Sharing</div>
     </div>
-
-
-
 
   </div>
 

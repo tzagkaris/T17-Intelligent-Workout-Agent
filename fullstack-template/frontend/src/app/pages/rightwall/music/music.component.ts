@@ -5,6 +5,12 @@ import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
 import { IMusicState, MediaService } from 'src/app/global/services/media/media.service';
 
+/**
+ * TODO
+ * Make component dynamic
+*/
+
+
 @Component({
   selector: 'music',
   templateUrl: './music.component.html',
@@ -18,6 +24,7 @@ export class MusicComponent implements OnInit, AfterViewInit {
   cState: IMusicState = {
     status: 'paused',
     index: -1,
+    volume: .2,
     song: { /* placeholder */
       name: 'None Playing',
       artist: 'no info',
@@ -49,12 +56,15 @@ export class MusicComponent implements OnInit, AfterViewInit {
 
   public handleNewState(state: IMusicState) {
     console.log(state);
+
+    this.handleVolumeChange(state);
+
     /* if no song is selected will try to change to first song */
     if(!this.handleNextSong(state)) return;
 
     /* check pause/play if status changed */
     if(state.status != this.cState.status) {
-      
+
       if(state.status == 'paused')
         this.handlePause(state);
       else if(state.status == 'playing')
@@ -72,6 +82,11 @@ export class MusicComponent implements OnInit, AfterViewInit {
 
   public handlePlay(state: IMusicState) {
     this.audio.play();
+  }
+
+  public handleVolumeChange(state: IMusicState) {
+
+    this.audio.volume = state.volume;
   }
 
   public handleNextSong(state: IMusicState) {

@@ -75,6 +75,11 @@ export class MediaController {
       this.logic.onError
     )
 
+    router.post('/music/volume',
+      this.logic.changeVolume,
+      this.logic.onError
+    )
+
     return router;
   }
 }
