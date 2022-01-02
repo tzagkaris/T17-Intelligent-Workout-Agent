@@ -76,7 +76,7 @@ export class MediaService {
   /* events: music/state */
   public getMusicState = () => {
 
-    return this.http.get(`${this.hostURI}/api/media/music`);
+    return this.http.get<IMusicState>(`${this.hostURI}/api/media/music`);
   }
 
   public getMusicTrackList = () => {

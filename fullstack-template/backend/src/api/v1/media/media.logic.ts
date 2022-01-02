@@ -128,7 +128,7 @@ export class MediaLogic {
 
 /* returns music state */
 public getMusicState = (req: Request, res: Response, next: NextFunction) => {
-  
+
   res.send(this.musicState);
   return;
 }
@@ -180,7 +180,7 @@ public getSongList = (req: Request, res: Response, next: NextFunction) => {
     this.musicState.index = ( this.musicState.index + 1 ) % this.songsArray.length;
 
     this.musicState.song = this.songsArray[this.musicState.index];
-
+``
     this.broadcastMusicState();
     res.status(200).send();
   }
@@ -211,7 +211,7 @@ public getSongList = (req: Request, res: Response, next: NextFunction) => {
   public broadcastMusicState = () => {
 
     const cs = DIContainer.get(SocketsService);
-    cs.broadcast('mirror/state', this.musicState);
+    cs.broadcast('music/state', this.musicState);
   }
 
   /* router calls this if error */

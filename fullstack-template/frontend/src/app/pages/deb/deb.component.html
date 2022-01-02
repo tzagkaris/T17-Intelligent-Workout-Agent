@@ -3,7 +3,7 @@
   <div id="infolist" class="header-2">
     <div class="infoHeader mar-block">This is a hidden page for debugging use only.</div>
 
-    <h2 class="infoHeader mar-block header-3">Workout State Controls.</h2>
+    <h2 class="infoHeader mar-block header-3">Workout State Debugger.</h2>
 
     <ul id="stateshowlist" class="text-1">
       <li class="header-3">Workout Condition is: <span style="float: right; font-weight: 600;">{{currentExerciseState.condition}}</span></li>
@@ -26,7 +26,7 @@
       <div class="btn btn-secondary" (click)="resetExState()">Reset State</div>
     </div>
 
-    <h2 class="infoHeader mar-block header-3">Secondary Media Controls.</h2>
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Secondary Media Debugger.</h2>
 
     <ul class="stateshowlist" class="text-1">
       <li class="header-3">Video Name is: <span style="float: right; font-weight: 600;">{{secondaryMediaState.name}}</span></li>
@@ -44,7 +44,36 @@
       <div class="btn btn-primary" (click)="setSelected()">Set</div>
     </div>
 
-    <h2 class="infoHeader mar-block header-3">Mirror Playground.</h2>
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Music Player Debugger.</h2>
+
+    <ul class="stateshowlist" class="text-1">
+      <li class="header-3">Music state: <span style="float: right; font-weight: 600;">{{musicState.status}}</span></li>
+      <li class="header-3">Track Selected: <span style="float: right; font-weight: 600;">{{musicState.song.name}}</span></li>
+      <li class="header-3">Track index: <span style="float: right; font-weight: 600;">{{musicState.index}}</span></li>
+    </ul>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+      <div class="btn btn-primary btn-trid" (click)="getMusicState()">Get State</div>
+
+      <select name="musicSelection" id="musicSelection" #musicSelection>
+        <option value="next">Play Next Track</option>
+        <option value="Lose Yourself">Eminem - Lose Yourself</option>
+        <option value="Venom">Eminem - Venom</option>
+        <option value="Without Me">Eminem - Without Me</option>
+        <option value="Killshot">Eminem - Killshot</option>
+        <option value="Milli Rocks">D4DJ - Milli Rocks</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="setTrack()">Set</div>
+    </div>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+      <div class="btn btn-primary" (click)="setMusicPlaying()">Play</div>
+      <div class="btn btn-secondary" (click)="setMusicPaused()">Pause</div>
+    </div>
+
+
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Phone camera streaming ( Mirror ) Debugger.</h2>
 
     <video  #vShow>Video not supported.</video>
     <canvas #vCanvas id="canvas">
