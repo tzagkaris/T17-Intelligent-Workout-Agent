@@ -121,8 +121,8 @@ export class MediaLogic {
   /* initial state */
   musicState: IMusicState = {
     status: 'paused',
-    song: undefined,
-    index: -1,
+    song: this.songsArray[0],
+    index: 0,
     volume: .2
   }
 
@@ -134,6 +134,19 @@ public getMusicState = (req: Request, res: Response, next: NextFunction) => {
   res.send(this.musicState);
   return;
 }
+
+public resetMusicState = (req: Request, res: Response, next: NextFunction) => {
+
+    this.musicState = {
+      status: 'paused',
+      song: this.songsArray[0],
+      index: 0,
+      volume: .2
+    }
+
+    this.broadcastMusicState()
+    res.status(200).send()
+  }
 
 /* returns music info array */
 public getSongList = (req: Request, res: Response, next: NextFunction) => {

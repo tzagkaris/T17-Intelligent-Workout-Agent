@@ -109,4 +109,9 @@ export class MediaService {
 
     return this.http.post(`${this.hostURI}/api/media/music/volume`, {volume: newValue});
   }
+
+  public resetMusicState = () => {
+
+    return this.http.delete(`${this.hostURI}/api/media/music`);
+  }
 }

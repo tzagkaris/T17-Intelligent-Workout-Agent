@@ -55,22 +55,17 @@ export class MusicComponent implements OnInit, AfterViewInit {
   }
 
   public handleNewState(state: IMusicState) {
-    console.log(state);
-
-    this.handleVolumeChange(state);
 
     /* if no song is selected will try to change to first song */
     if(!this.handleNextSong(state)) return;
 
     /* check pause/play if status changed */
-    if(state.status != this.cState.status) {
+    if(state.status == 'paused')
+    this.handlePause(state);
+    else if(state.status == 'playing')
+    this.handlePlay(state);
 
-      if(state.status == 'paused')
-        this.handlePause(state);
-      else if(state.status == 'playing')
-        this.handlePlay(state);
-      }
-
+    this.handleVolumeChange(state);
       /* set the current state */
       this.cState = state;
   }
@@ -81,12 +76,17 @@ export class MusicComponent implements OnInit, AfterViewInit {
   }
 
   public handlePlay(state: IMusicState) {
+    console.log(1);
     this.audio.play();
   }
 
   public handleVolumeChange(state: IMusicState) {
+    let playing = false;
+    if(this.isAudioPlaying()) playing = true;
 
     this.audio.volume = state.volume;
+
+    if(playing) this.audio.play();
   }
 
   public handleNextSong(state: IMusicState) {
@@ -101,4 +101,9 @@ export class MusicComponent implements OnInit, AfterViewInit {
 
     return 1;
   }
+
+  isAudioPlaying = () => {
+    return !!(this.audio.currentTime > 0 && !this.audio.paused && !this.audio.ended && this.audio.readyState > 2);
+  }
+
 }

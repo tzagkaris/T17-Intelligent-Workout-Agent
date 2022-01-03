@@ -80,7 +80,6 @@ export class SmartSpeakerService {
   addSmartCommand(text: string[], func: any) {
 
     this.artyom.addCommands({indexes: text, smart: true, action: func})
-
   }
 
   commitCommands = () => {

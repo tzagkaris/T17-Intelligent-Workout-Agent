@@ -80,6 +80,11 @@ export class MediaController {
       this.logic.onError
     )
 
+    router.delete('/music',
+      this.logic.resetMusicState,
+      this.logic.onError
+    )
+
     return router;
   }
 }

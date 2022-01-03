@@ -71,9 +71,12 @@
     <div id="button-container" class="flex-row align-equal mar-top">
       <div class="btn btn-primary" (click)="setMusicPlaying()">Play</div>
       <div class="btn btn-secondary" (click)="setMusicPaused()">Pause</div>
+      <div class="btn btn-secondary" (click)="resetMusicState()">Reset</div>
 
       <select name="volumeSelection" id="volumeSelection" #volumeSelection>
-        <option value="0.2">20%</option>
+        <option value="0.05">5%</option>
+        <option value="0.1">10%</option>
+        <option value="0.2" selected>20%</option>
         <option value="0.4">40%</option>
         <option value="0.6">60%</option>
         <option value=".8">80%</option>

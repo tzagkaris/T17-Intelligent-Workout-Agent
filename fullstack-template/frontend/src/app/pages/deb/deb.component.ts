@@ -262,4 +262,8 @@ export class DebComponent implements OnInit, AfterViewInit {
     let vol = parseFloat(this.volumeSelection.value);
     this.mediaService.setVolume(vol).subscribe();
   }
+
+  public resetMusicState = () => {
+    this.mediaService.resetMusicState().subscribe();
+  }
 }
