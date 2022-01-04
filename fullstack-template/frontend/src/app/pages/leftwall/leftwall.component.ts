@@ -14,6 +14,6 @@ export class LeftwallComponent implements OnInit{
   constructor(private vas: VoiceAssistantService) {}
 
   ngOnInit(): void {
-      //this.vas.init();
+      this.vas.init();
   }
 }
