@@ -1,0 +1,126 @@
+.body-inner {
+    background-image: url(./../../assets/mobile-index-background.png);
+    width: 375px;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.jessica-box{
+    display: flex;
+    justify-content: space-between;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.jessica-box img {
+    height: 50px;
+    width: 50px;
+    margin: 10px 6px 10px 10px;
+}
+
+
+.x {
+    display: flex;
+}
+
+p.para-2 {
+    margin: 0;
+}
+.jessica-box h3.header-3 {
+    margin: 0;
+    font-style: italic;
+}
+
+.turn-off img {
+    height: 42px;
+    width: 38px;
+    margin: 14px 18px 14px 0px;
+}
+
+.round-corners--bottom{
+    border-radius: 0px 0px 5px 5px;
+}
+
+
+.hello-text {
+    text-align: center;
+}
+
+.hello-text p{
+    font-size: 28px;
+}
+
+.name-tone {
+    font-weight: 600;
+}
+
+
+.sched-workout {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 10px;
+}
+
+.day-workout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sched-workout h4.header-4 {
+    margin: 0;
+}
+
+.thearrow {
+    align-self: center;
+    margin: 21px 19px 21px 0px;
+}
+
+.sched-text {
+    margin: 12px 0px 12px 27px;
+}
+
+.sched-text h2.header-2 {
+    margin: 0px 0px 8px 0px;
+}
+
+.custom-container {
+    margin: 30px 10px;
+}
+
+.custom-text h2.header-2 {
+    margin: auto;
+    padding-top: 12px;
+}
+
+.custom-text h4.header-4 {
+    margin: auto;
+}
+
+.custom-icons-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 13px 0px;
+}
+
+
+.round-corners--top{
+    border-radius: 5px 5px 0px 0px;
+}
+
+.footer-bar {
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.footer-bar img {
+    padding: 15px 0px;
+}
+
+.footer-icon img {
+    box-shadow: 0px 3px 0px #fff;
+}
