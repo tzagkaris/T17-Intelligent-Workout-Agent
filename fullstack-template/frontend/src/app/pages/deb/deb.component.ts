@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { toInteger } from 'lodash';
 import { IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { ISecondaryMediaState } from 'src/app/global/models/media/media.models';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
-import { IMirrorBundle, MediaService } from 'src/app/global/services/media/media.service';
+import { IMirrorBundle, IMusicState, ISong, MediaService } from 'src/app/global/services/media/media.service';
 
 @Component({
   selector: 'ami-fullstack-deb',
@@ -30,6 +31,29 @@ export class DebComponent implements OnInit, AfterViewInit {
   canvas: HTMLCanvasElement;
   video: HTMLVideoElement;
 
+  @ViewChild('musicSelection', {static: true}) musicSelectionRef: ElementRef;
+  @ViewChild('volumeSelection', {static: true}) volumeSelectionRef: ElementRef;
+  musicSelection: HTMLSelectElement;
+  volumeSelection: HTMLSelectElement;
+
+  tempSong: ISong = {
+    name: 'no info',
+    artist: 'no info',
+    duration: 'none',
+    filepath: ''
+  }
+
+  musicState: IMusicState = {
+    index: -1,
+    status: 'paused',
+    volume: .2,
+    song: {
+      name: 'no info',
+      artist: 'no info',
+      duration: 'none',
+      filepath: ''
+    }
+  };
 
   constructor(private exStateService: ExerciseStateService,
               private mediaService: MediaService,
@@ -54,6 +78,7 @@ export class DebComponent implements OnInit, AfterViewInit {
     path: 'initial'
   }
 
+
   ngOnInit() {
 
     this.socketService.syncMessages("exercise-state").subscribe((msg) => {
@@ -64,12 +89,23 @@ export class DebComponent implements OnInit, AfterViewInit {
       this.secondaryMediaState = msg.message;
     })
 
+    this.socketService.syncMessages('music/state').subscribe((msg) => {
+      if(msg.message.song == undefined)
+        msg.message.song = this.tempSong;
+
+        this.musicState = msg.message;
+    })
+
   }
 
   ngAfterViewInit(): void {
 
+    /* getting html handles */
     this.video = this.videoElem.nativeElement;
     this.canvas = this.canvasElem.nativeElement;
+
+    this.musicSelection = this.musicSelectionRef.nativeElement;
+    this.volumeSelection = this.volumeSelectionRef.nativeElement;
 
 
     /* STREAMING VIDEO FEED */
@@ -189,4 +225,45 @@ export class DebComponent implements OnInit, AfterViewInit {
     return null;
   }
 
+  /* MUSIC PLAYER */
+  public getMusicState = () => {
+    this.mediaService.getMusicState()
+    .subscribe(res => {
+      if(res.song == undefined)
+        res.song = this.tempSong;
+      this.musicState = res;
+    })
+  }
+
+  public setMusicPlaying = () => {
+    this.mediaService.setMusicPlaying().subscribe();
+  }
+
+  public setMusicPaused = () => {
+    this.mediaService.setMusicPaused().subscribe();
+  }
+
+  public setTrack = () => {
+    if( this.musicSelection.value == 'next')
+      this.setNextTrack();
+    else
+      this.setTrackByName(this.musicSelection.value);
+  }
+
+  public setNextTrack = () => {
+    this.mediaService.nextTrack().subscribe();
+  }
+
+  public setTrackByName = (name: string) => {
+    this.mediaService.setTrackByName(name).subscribe();
+  }
+
+  public changeVolume = () => {
+    let vol = parseFloat(this.volumeSelection.value);
+    this.mediaService.setVolume(vol).subscribe();
+  }
+
+  public resetMusicState = () => {
+    this.mediaService.resetMusicState().subscribe();
+  }
 }

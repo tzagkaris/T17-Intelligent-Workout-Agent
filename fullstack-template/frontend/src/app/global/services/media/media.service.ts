@@ -2,11 +2,30 @@ import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
+/* Mirror interfaces */
+
 export interface IMirrorBundle {
   width: number,
   height: number,
   image: string,
   command?: string
+}
+
+/* Music  interfaces */
+
+export interface ISong {
+  'name' : string,
+  'artist' : string,
+  'filepath' : string,
+  'duration' : string,    /* only used to update visual components */
+  'durationInSecs'? : number,  /* may be implemented, if there is time, to create dynamic duration bars */
+}
+
+export interface IMusicState {
+  'status' : string,
+  'song' : ISong | undefined,
+  'index': number,
+  'volume': number
 }
 
 @Injectable({
@@ -21,6 +40,7 @@ export class MediaService {
   }
 
   /* SECONDARY MEDIA */
+  /* events: secondary-video */
 
   public setSecondaryMedia = (videoName: String, videoPath: String) => {
 
@@ -51,5 +71,47 @@ export class MediaService {
   public closeMirror = () => {
 
     return this.http.delete(`${this.hostURI}/api/media/mirror`);
+  }
+
+  /* MUSIC */
+  /* events: music/state */
+  public getMusicState = () => {
+
+    return this.http.get<IMusicState>(`${this.hostURI}/api/media/music`);
+  }
+
+  public getMusicTrackList = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/music/list`);
+  }
+
+  public setMusicPlaying = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/music/play`);
+  }
+
+  public setMusicPaused = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/music/pause`);
+  }
+
+  public nextTrack = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/music/next`);
+  }
+
+  public setTrackByName = (trackName: string) => {
+
+    return this.http.post(`${this.hostURI}/api/media/music/song`, {name: trackName});
+  }
+
+  public setVolume = (newValue: number) => {
+
+    return this.http.post(`${this.hostURI}/api/media/music/volume`, {volume: newValue});
+  }
+
+  public resetMusicState = () => {
+
+    return this.http.delete(`${this.hostURI}/api/media/music`);
   }
 }
