@@ -133,6 +133,7 @@ export class VoiceAssistantService {
       /* this function will not run anything other that confirmation or invalidation*/
       /* wildcard is unexpected */
       /* will manualy trigger code from /deb */
+      this.speaker.speak(this.getRandomPhrase(0));
     }
 
     onPlay = () => {

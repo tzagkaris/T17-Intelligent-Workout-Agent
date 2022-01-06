@@ -198,8 +198,6 @@ export class OnExersiceLogic {
     return undefined;
   }
 
-  /* this will just send a broadcast on on-workout to change the specific set reps. */
-  /* If set does not have reps this will be ignored in frontend */
   public changeReps = (req: Request, res: Response, next: NextFunction) => {
 
     if(!req.body.newReps) {
@@ -213,7 +211,12 @@ export class OnExersiceLogic {
       return;
     }
 
-    this.broadcastNewReps(newReps);
+    /* ignore if currExercise does not have reps */
+    if(this.status.currExercise.reps) {
+      this.status.currExercise.reps[this.status.currSet - 1] = newReps;
+
+      this.broadcastState("exercise-state");
+    }
     res.status(200).send();
   }
 
@@ -230,8 +233,14 @@ export class OnExersiceLogic {
       return;
     }
 
-    this.broadcastNewTime(newTime);
-    res.status(200).send();
+    /* ignore if currExercise does not have countDown */
+    if(this.status.currExercise.countDownTimeInSecs) {
+      this.status.currExercise.countDownTimeInSecs = newTime;
+
+      this.broadcastState("exercise-state");
+    }
+
+      res.status(200).send();
   }
 
   public signalWorkoutStart = (req: Request, res: Response, next: NextFunction) => {
@@ -283,17 +292,5 @@ export class OnExersiceLogic {
 
     const cs = DIContainer.get(SocketsService);
     cs.broadcast('exercise/pause', this.status.condition);
-  }
-
-  public broadcastNewReps = (newReps: number) => {
-
-    const cs = DIContainer.get(SocketsService);
-    cs.broadcast('exercise/changeReps', newReps);
-  }
-
-  public broadcastNewTime = (newTime: number) => {
-
-    const cs = DIContainer.get(SocketsService);
-    cs.broadcast('exercise/changeTime', newTime);
   }
 }

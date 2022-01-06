@@ -36,6 +36,12 @@ export class DebComponent implements OnInit, AfterViewInit {
   musicSelection: HTMLSelectElement;
   volumeSelection: HTMLSelectElement;
 
+  @ViewChild('timeSelector', {static: true}) timeSelectorRef: ElementRef;
+  @ViewChild('repSelector', {static: true}) repSelectorRef: ElementRef;
+  repSelector: HTMLSelectElement;
+  timeSelector: HTMLSelectElement;
+
+
   tempSong: ISong = {
     name: 'no info',
     artist: 'no info',
@@ -107,6 +113,8 @@ export class DebComponent implements OnInit, AfterViewInit {
     this.musicSelection = this.musicSelectionRef.nativeElement;
     this.volumeSelection = this.volumeSelectionRef.nativeElement;
 
+    this.repSelector = this.repSelectorRef.nativeElement;
+    this.timeSelector = this.timeSelectorRef.nativeElement;
 
     /* STREAMING VIDEO FEED */
     this.video.addEventListener('canplay', () => {
@@ -277,5 +285,15 @@ export class DebComponent implements OnInit, AfterViewInit {
 
   public pauseWorkout = () => {
     this.exStateService.pauseWorkout().subscribe();
+  }
+
+  public setNewReps = () => {
+    let reps = parseInt(this.repSelector.value);
+    this.exStateService.newReps(reps).subscribe();
+  }
+
+  public setNewTime = () => {
+    let time = parseInt(this.timeSelector.value);
+    this.exStateService.newTime(time).subscribe();
   }
 }

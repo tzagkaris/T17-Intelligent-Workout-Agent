@@ -48,7 +48,7 @@ export class ExerciseStateService {
   }
 
   public newReps(newReps: number) {
-
+    
     return this.http.post(`${this.hostURI}/api/exercise/chageReps`, {newReps: newReps});
   }
 

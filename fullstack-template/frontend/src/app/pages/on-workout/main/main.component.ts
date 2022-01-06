@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
       type : 'none',
     }
   };
+
   public currVideoPath: String = './../../assets/cactus.mp4';  /* temp video */
 
   VideoPaths: String[] = [
@@ -36,6 +37,8 @@ export class MainComponent implements OnInit {
     './../../assets/cactus.mp4',
     './../../assets/cactus.mp4'
   ]
+
+  public exInfo = "no info";
 
   constructor(private exService: ExerciseStateService, private socketService: SocketsService) {}
 
@@ -48,18 +51,42 @@ ngOnInit(): void {
   this.exService.fetchExerciseState().subscribe((res: IStatus) => {
     this.currStatus = res;
     this.setSetRep(res);
+    this.setExerciseInfo(res);
     this.currVideoPath = this.VideoPaths[res.exerciseNo]
     this.addWarmUp(res);
   })
 
-
   this.socketService.syncMessages("exercise-state").subscribe((msg) => {
     this.currStatus = msg.message;
     this.setSetRep(msg.message);
+    this.setExerciseInfo(msg.message);
     this.currVideoPath = this.VideoPaths[msg.message.exerciseNo]
     this.addWarmUp(msg.message);
   })
 }
+
+  setExerciseInfo = (status: IStatus) => {
+
+    this.exInfo = status.currExercise.name + " ::: ";
+
+    if(status.currExercise.reps) {
+      // exercise type is regular or weights
+
+      let exReps = " ";
+      exReps = exReps.concat(` ${status.currExercise.sets} x `)
+
+      status.currExercise.reps.forEach(rep => {
+        exReps = exReps.concat(`${rep} - `);
+      })
+
+      exReps = exReps.substring(0, exReps.length - 2);
+      this.exInfo = this.exInfo.concat(exReps);
+    } else {
+      // exercise type is countdown or countup
+
+      this.exInfo.concat(`${status.currExercise.countDownTimeInSecs} s`)
+    }
+  }
 
   setSetRep = (status: IStatus) => {
 
@@ -81,17 +108,20 @@ ngOnInit(): void {
   simulateRepCountDown = (output: String, status: IStatus) => {
 
     if(!status.currExercise.countDownTimeInSecs) return;
+    this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${ status.currExercise.countDownTimeInSecs}` ;
+    setTimeout(() => {
+      /* this runs every second. If counter reaches 0, this stops ticking */
+      var repIntervalSecondCounter = status.currExercise.countDownTimeInSecs;
+      var repInterval = setInterval(() => {
+        repIntervalSecondCounter -= 1;
+        if(repIntervalSecondCounter == 0) {
+          clearInterval(repInterval);
+        }
 
-    /* this run every second. If counter reaches 0, this stops ticking */
-    var repIntervalSecondCounter = status.currExercise.countDownTimeInSecs;
-    var repInterval = setInterval(() => {
-      repIntervalSecondCounter -= 1;
-      if(repIntervalSecondCounter == 0) {
-        clearInterval(repInterval);
-      }
+        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter}` ;
+      }, 1000)
+    }, 45000)
 
-      this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter}` ;
-    }, 1000)
   }
 
   addWarmUp = (status: IStatus) => {
