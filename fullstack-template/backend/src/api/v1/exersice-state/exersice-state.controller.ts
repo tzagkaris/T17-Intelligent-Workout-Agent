@@ -18,6 +18,10 @@ export class ExersiceStateController {
 
     router.post('/stateUp', this.logic.incState, this.logic.getStateOnError);
 
+    router.post('/chageReps', this.logic.changeReps, this.logic.getStateOnError);
+
+    router.post('/chageTime', this.logic.changeTime, this.logic.getStateOnError);
+
     router.delete('/reset', this.logic.resetState, this.logic.getStateOnError);
 
     router.get('/exersices', this.logic.getExersiceArray, this.logic.getStateOnError);

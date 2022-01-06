@@ -198,6 +198,42 @@ export class OnExersiceLogic {
     return undefined;
   }
 
+  /* this will just send a broadcast on on-workout to change the specific set reps. */
+  /* If set does not have reps this will be ignored in frontend */
+  public changeReps = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.newReps) {
+      next('no newReps found in request.');
+      return;
+    }
+
+    let newReps = parseInt(req.body.newReps);
+    if(newReps < 1 || newReps > 50) {
+      next('invalid newReps range.');
+      return;
+    }
+
+    this.broadcastNewReps(newReps);
+    res.status(200).send();
+  }
+
+  public changeTime = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.newTime) {
+      next('no newTime found in request');
+      return;
+    }
+
+    let newTime = parseInt(req.body.newTime);
+    if(newTime < 0 || newTime > 500) {
+      next('invalid newTime range');
+      return;
+    }
+
+    this.broadcastNewTime(newTime);
+    res.status(200).send();
+  }
+
   public signalWorkoutStart = (req: Request, res: Response, next: NextFunction) => {
 
     this.broadcastWorkoutStart();
@@ -247,5 +283,17 @@ export class OnExersiceLogic {
 
     const cs = DIContainer.get(SocketsService);
     cs.broadcast('exercise/pause', this.status.condition);
+  }
+
+  public broadcastNewReps = (newReps: number) => {
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/changeReps', newReps);
+  }
+
+  public broadcastNewTime = (newTime: number) => {
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/changeTime', newTime);
   }
 }

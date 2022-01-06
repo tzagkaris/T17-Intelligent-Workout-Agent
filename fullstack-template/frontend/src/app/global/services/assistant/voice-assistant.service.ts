@@ -73,26 +73,32 @@ export class VoiceAssistantService {
     /* send a req to broadcast to center-wall and navigate to on-workout */
     startWorkout = () => {
       //console.log('on start workout');
+      this.speaker.speak(this.getRandomPhrase(0));
       this.exercise.startWorkout().subscribe();
     }
 
     /* send a req to broadcast to on-workout to quickly abort the workout */
     abortWorkout = () => {
       //console.log('on abort workout');
+      this.speaker.speak(this.getRandomPhrase(0));
       this.exercise.endWorkout().subscribe();
     }
 
     /* send a req to broadcast to on-workout to stop ongoing timer and heart rate monitor */
     pauseWorkout = () => {
       //console.log('on pause workout);
+      this.speaker.speak(this.getRandomPhrase(0));
       this.exercise.pauseWorkout().subscribe();
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the reps */
     onLowerReps = (i, wildcard) => {
       /* this function will not run anything other that confirmation or invalidation*/
-      /* wildcard is unexpected */
+      /* because wildcard is unexpected */
       /* will manualy trigger code from /deb */
+      /* console.log('on lower reps ', wildcard) */
+      this.speaker.speak(this.getRandomPhrase(0));
+
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the reps */
@@ -100,6 +106,8 @@ export class VoiceAssistantService {
       /* this function will not run anything other that confirmation or invalidation*/
       /* wildcard is unexpected */
       /* will manualy trigger code from /deb */
+      /* console.log('on raise reps ', wildcard) */
+      this.speaker.speak(this.getRandomPhrase(0));
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the time */
@@ -107,6 +115,8 @@ export class VoiceAssistantService {
       /* this function will not run anything other that confirmation or invalidation*/
       /* wildcard is unexpected */
       /* will manualy trigger code from /deb */
+      /* console.log('on lower time ', wildcard) */
+      this.speaker.speak(this.getRandomPhrase(0));
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the time */
@@ -114,6 +124,8 @@ export class VoiceAssistantService {
       /* this function will not run anything other that confirmation or invalidation*/
       /* wildcard is unexpected */
       /* will manualy trigger code from /deb */
+      /* console.log('on raise time ', wildcard) */
+      this.speaker.speak(this.getRandomPhrase(0));
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the secondary media  */
