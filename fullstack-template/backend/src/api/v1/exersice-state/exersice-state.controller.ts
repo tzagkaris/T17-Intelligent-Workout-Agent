@@ -8,6 +8,12 @@ export class ExersiceStateController {
   public applyRoutes(): Router {
     const router = Router();
 
+    router.get('/start', this.logic.signalWorkoutStart, this.logic.getStateOnError)
+
+    router.get('/end', this.logic.signalWorkoutEnd, this.logic.getStateOnError)
+
+    router.get('/pause', this.logic.signalWorkoutPause, this.logic.getStateOnError)
+
     router.post('/state', this.logic.getState, this.logic.getStateOnError);
 
     router.post('/stateUp', this.logic.incState, this.logic.getStateOnError);

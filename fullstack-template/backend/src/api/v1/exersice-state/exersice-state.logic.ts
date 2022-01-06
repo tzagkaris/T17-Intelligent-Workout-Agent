@@ -44,7 +44,7 @@ export class OnExersiceLogic {
     exerciseNo: 0,
     currSet: 1,
     currRep: 0,
-    condition: "ongoing",
+    condition: "not started",
   };
 
   public getExersiceArray = (req: Request, res: Response, next: NextFunction) => {
@@ -66,19 +66,24 @@ export class OnExersiceLogic {
       res.send('ok');
       return;
     }
-
+    let finished: string| undefined = undefined;
     switch(this.status.currExercise.type) {
+
+
       case 'Regular':
       case 'Weights':
-        this.incRepRegular();
+        finished = this.incRepRegular();
         break;
 
       case 'CountDown':
-        this.incRepCountDown();
+        finished = this.incRepCountDown();
         break;
     }
     /*  */
+
     this.broadcastState(req.body.event);
+
+    if(finished) this.broadcastWorkoutEnd();
     res.send(this.status);
   }
 
@@ -89,7 +94,7 @@ export class OnExersiceLogic {
       exerciseNo: 0,
       currSet: 1,
       currRep: 0,
-      condition: "ongoing",
+      condition: "not started",
     };
 
     this.broadcastState("exercise-state");
@@ -107,7 +112,7 @@ export class OnExersiceLogic {
 
 
 
-  public incRepRegular = () => {
+  public incRepRegular = (): string | undefined => {
     const exCap = this.exerciseArray.length;
     const cSet = this.status.currSet;
     const cRep = this.status.currRep;
@@ -133,6 +138,7 @@ export class OnExersiceLogic {
     if(repsCapped && setsCapped && exCapped) {
 
       this.status.condition = 'finished';
+      return this.status.condition;
     }
     // next exercise
     else if(repsCapped && setsCapped && !exCapped) {
@@ -151,9 +157,11 @@ export class OnExersiceLogic {
     // next Rep
     else
       ++this.status.currRep;
+
+      return undefined;
   }
 
-  public incRepCountDown = () => {
+  public incRepCountDown = (): string | undefined => {
 
     const exCap = this.exerciseArray.length;
     const cSet = this.status.currSet;
@@ -174,6 +182,7 @@ export class OnExersiceLogic {
     if(setsCapped && exCapped) {
 
       this.status.condition = 'finished';
+      return this.status.condition;
     }
     // next exercise
     else if(setsCapped && !exCapped) {
@@ -186,15 +195,57 @@ export class OnExersiceLogic {
     else
       ++this.status.currSet;
 
+    return undefined;
+  }
+
+  public signalWorkoutStart = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutStart();
+    res.status(200).send();
+  }
+
+  public signalWorkoutEnd = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutEnd();
+    res.status(200).send();
+  }
+
+  public signalWorkoutPause = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutPause();
+    res.status(200).send();
   }
 
   public getStateOnError = (err: Error, req: Request, res: Response, next: NextFunction) => {
-    res.send('error');  // may do something fancy later on
+    res.send({'error' : err});
   }
 
   public broadcastState = (event: string) => {
 
     const cs = DIContainer.get(SocketsService);
     cs.broadcast(event, this.status);
+  }
+
+  public broadcastWorkoutStart = () => {
+
+    this.status.condition = 'on workout';
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/start', this.status.condition);
+  }
+
+  public broadcastWorkoutEnd = () => {
+
+    this.status.condition = 'finished';
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/end', this.status.condition);
+  }
+
+  public broadcastWorkoutPause = () => {
+
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/pause', this.status.condition);
   }
 }

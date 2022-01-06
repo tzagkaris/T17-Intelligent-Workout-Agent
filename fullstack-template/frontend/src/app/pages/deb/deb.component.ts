@@ -266,4 +266,16 @@ export class DebComponent implements OnInit, AfterViewInit {
   public resetMusicState = () => {
     this.mediaService.resetMusicState().subscribe();
   }
+
+  public startWorkout = () => {
+    this.exStateService.startWorkout().subscribe();
+  }
+
+  public endWorkout = () => {
+    this.exStateService.endWorkout().subscribe();
+  }
+
+  public pauseWorkout = () => {
+    this.exStateService.pauseWorkout().subscribe();
+  }
 }

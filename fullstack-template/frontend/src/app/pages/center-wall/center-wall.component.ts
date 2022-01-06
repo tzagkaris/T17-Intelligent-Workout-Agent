@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
@@ -11,19 +12,15 @@ import { SmartSpeakerService } from 'src/app/global/services/smart-speaker/smart
 })
 export class CenterWallComponent implements OnInit {
 
-  constructor(/* private speakerService: SmartSpeakerService */) {}
+  constructor(private sock: SocketsService,
+                          private router: Router) {}
 
   ngOnInit(): void {
 
-    /* this.speakerService.addCommand(["hello"], () => {
-      this.speakerService.speak("Hello");
+    this.sock.syncMessages('exercise/start').subscribe(msg => {
+
+      this.router.navigateByUrl('/on-workout');
     })
 
-    this.speakerService.addSmartCommand(["car *"], (i, wildcard) => {
-      console.log('hot '+ wildcard );
-    }) */
-
-    /* commit commands after some time, sometimes it does not */
-    /* this.speakerService.commitCommands(); */
   }
 }

@@ -13,6 +13,21 @@ export class ExerciseStateService {
     this.hostURI = environment.host;
   }
 
+  /* call this to inform center-wall to go to on-workout screen */
+  public startWorkout() {
+
+    return this.http.get(`${this.hostURI}/api/exercise/start`);
+  }
+
+  /* call this to inform on-workout to abort and return to center wall */
+  public endWorkout() {
+    return this.http.get(`${this.hostURI}/api/exercise/end`);
+  }
+
+  public pauseWorkout() {
+    return this.http.get(`${this.hostURI}/api/exercise/pause`);
+  }
+
   public fetchExerciseState() {
     return this.http.post(`${this.hostURI}/api/exercise/state`, { event: "exercise-state"});
   }

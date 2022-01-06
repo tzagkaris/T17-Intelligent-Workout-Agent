@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { SocketsService } from "..";
 import { ExerciseStateService } from "../exercise-state/exercise-state.service";
 import { MediaService } from "../media/media.service";
 import { SmartSpeakerService } from "../smart-speaker/smart-speaker.service";
@@ -11,7 +12,8 @@ export class VoiceAssistantService {
   constructor(
     private speaker: SmartSpeakerService,
     private media: MediaService,
-    private exercise: ExerciseStateService) {}
+    private exercise: ExerciseStateService,
+    private sock: SocketsService) {}
 
     /* add all commands that assistant will recognice */
     init = () => {
@@ -25,6 +27,10 @@ export class VoiceAssistantService {
 
       this.speaker.addCommand(["please end workout", "please abort workout"],
         this.abortWorkout
+      )
+
+      this.speaker.addCommand(["please workout pause", "please wait"],
+        this.pauseWorkout
       )
 
       this.speaker.addSmartCommand(["please lower reps to *"],
@@ -64,16 +70,22 @@ export class VoiceAssistantService {
       this.speaker.commitCommands();
     }
 
-    /* TO DO: send a req to broadcast to center-wall and navigate to on-workout */
-    startWorkout = (i, wildcard) => {
-
+    /* send a req to broadcast to center-wall and navigate to on-workout */
+    startWorkout = () => {
       //console.log('on start workout');
+      this.exercise.startWorkout().subscribe();
     }
 
-    /* TO DO: send a req to broadcast to on-workout to quickly abort the workout */
-    abortWorkout = (i, wildcard) => {
-
+    /* send a req to broadcast to on-workout to quickly abort the workout */
+    abortWorkout = () => {
       //console.log('on abort workout');
+      this.exercise.endWorkout().subscribe();
+    }
+
+    /* send a req to broadcast to on-workout to stop ongoing timer and heart rate monitor */
+    pauseWorkout = () => {
+      //console.log('on pause workout);
+      this.exercise.pauseWorkout().subscribe();
     }
 
     /* TO DO: send a req to broadcast to on-workout to modify the reps */
