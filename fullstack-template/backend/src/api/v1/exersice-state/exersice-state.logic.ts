@@ -1,5 +1,6 @@
 import { DIContainer, SocketsService } from '@app/services';
 import { Request, Response, NextFunction, Router } from 'express';
+import { MediaLogic } from './../media/media.logic';
 
 interface IStatusOptional {
   tmp: number;
@@ -23,6 +24,7 @@ interface IExerciseOptional {
 interface IExercise {
   name: string;
   type: string;
+  vpath: string;
   sets?: number;
   reps?: number[];
   countDownTimeInSecs?: number;
@@ -31,11 +33,14 @@ interface IExercise {
 
 export class OnExersiceLogic {
 
+  constructor(private mediaLogic: MediaLogic) {}
+
   /* this is the array of exercises */
   public exerciseArray: IExercise[] = [
-    { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8] },
-    { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8] , optional: { weightUsed: []} },
-    { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60 },
+    { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8], vpath: './../../assets/cactus.mp4'},
+    { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../assets/cactus.mp4' },
+    { name: 'Temporary 3' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
+    { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60, vpath: './../../assets/cactus.mp4' },
   ];
 
   /* this is the current status */
@@ -76,6 +81,7 @@ export class OnExersiceLogic {
         break;
 
       case 'CountDown':
+      case 'CountUp':
         finished = this.incRepCountDown();
         break;
     }
@@ -121,6 +127,12 @@ export class OnExersiceLogic {
     let repsCapped:boolean = false;
     let setsCapped:boolean = false;
     let exCapped:boolean = false;
+
+    // smol addition ( ring bell if this is the last rep)
+    if(cRep === this.status.currExercise.reps[cSet - 1] - 2) {
+      this.mediaLogic.broadcastBellRing();
+      console.log(1);
+    }
 
     // check if reps are capped
     if(cRep === this.status.currExercise.reps[cSet - 1] - 1)
@@ -243,6 +255,21 @@ export class OnExersiceLogic {
       res.status(200).send();
   }
 
+  public incHeartRate = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.incOffset || !req.body.decOffset) {
+      next('no incOffset found in request');
+      return;
+    }
+
+    let incOffset = parseInt(req.body.incOffset);
+    let decOffset = parseInt(req.body.decOffset);
+
+    this.broadcastNewOffset(incOffset, decOffset);
+
+    res.status(200).send();
+  }
+
   public signalWorkoutStart = (req: Request, res: Response, next: NextFunction) => {
 
     this.broadcastWorkoutStart();
@@ -292,5 +319,11 @@ export class OnExersiceLogic {
 
     const cs = DIContainer.get(SocketsService);
     cs.broadcast('exercise/pause', this.status.condition);
+  }
+
+  public broadcastNewOffset = (inc: number, dec: number) => {
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/hinc', {incOffset: inc, decOffset: dec});
   }
 }

@@ -48,12 +48,17 @@ export class ExerciseStateService {
   }
 
   public newReps(newReps: number) {
-    
+
     return this.http.post(`${this.hostURI}/api/exercise/chageReps`, {newReps: newReps});
   }
 
   public newTime(newTime: number) {
 
     return this.http.post(`${this.hostURI}/api/exercise/chageTime`, {newTime: newTime})
+  }
+
+  public incHeartRateOffset(incOffset: number, decOffset: number) {
+
+    return this.http.post(`${this.hostURI}/api/exercise/hinc`, {incOffset: incOffset, decOffset: decOffset});
   }
 }

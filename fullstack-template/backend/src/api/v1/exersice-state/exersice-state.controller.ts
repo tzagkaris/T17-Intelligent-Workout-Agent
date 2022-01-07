@@ -1,9 +1,10 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { OnExersiceLogic } from './exersice-state.logic';
+import { MediaLogic } from '../media/media.logic';
 
 export class ExersiceStateController {
 
-  public logic: OnExersiceLogic  = new OnExersiceLogic();
+  public logic: OnExersiceLogic  = new OnExersiceLogic(new MediaLogic());
 
   public applyRoutes(): Router {
     const router = Router();
@@ -25,6 +26,8 @@ export class ExersiceStateController {
     router.delete('/reset', this.logic.resetState, this.logic.getStateOnError);
 
     router.get('/exersices', this.logic.getExersiceArray, this.logic.getStateOnError);
+
+    router.post('/hinc', this.logic.incHeartRate, this.logic.getStateOnError);
 
     return router;
   }

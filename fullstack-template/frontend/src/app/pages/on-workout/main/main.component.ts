@@ -4,6 +4,7 @@ import { result } from 'lodash';
 import { IExercise, IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
+import { MediaService } from 'src/app/global/services/media/media.service';
 
 @Component({
   selector: 'main',
@@ -26,21 +27,16 @@ export class MainComponent implements OnInit {
     currExercise : {
       name : 'none',
       type : 'none',
+      vpath: 'none',
     }
   };
 
   public currVideoPath: String = './../../assets/cactus.mp4';  /* temp video */
 
-  VideoPaths: String[] = [
-    /* temporary */
-    './../../assets/cactus.mp4',
-    './../../assets/cactus.mp4',
-    './../../assets/cactus.mp4'
-  ]
-
   public exInfo = "no info";
 
-  constructor(private exService: ExerciseStateService, private socketService: SocketsService) {}
+  constructor(private exService: ExerciseStateService, private socketService: SocketsService,
+    private media: MediaService) {}
 
 ngOnInit(): void {
 
@@ -52,7 +48,7 @@ ngOnInit(): void {
     this.currStatus = res;
     this.setSetRep(res);
     this.setExerciseInfo(res);
-    this.currVideoPath = this.VideoPaths[res.exerciseNo]
+    this.currVideoPath = res.currExercise.vpath;
     this.addWarmUp(res);
   })
 
@@ -60,7 +56,7 @@ ngOnInit(): void {
     this.currStatus = msg.message;
     this.setSetRep(msg.message);
     this.setExerciseInfo(msg.message);
-    this.currVideoPath = this.VideoPaths[msg.message.exerciseNo]
+    this.currVideoPath = msg.message.currExercise.vpath;
     this.addWarmUp(msg.message);
   })
 }
@@ -68,13 +64,15 @@ ngOnInit(): void {
   setExerciseInfo = (status: IStatus) => {
 
     this.exInfo = status.currExercise.name + " ::: ";
+    let exSets = " ";
+    exSets = exSets.concat(` ${status.currExercise.sets} x `)
+
+    this.exInfo = this.exInfo.concat(exSets);
 
     if(status.currExercise.reps) {
       // exercise type is regular or weights
 
-      let exReps = " ";
-      exReps = exReps.concat(` ${status.currExercise.sets} x `)
-
+      let exReps = "";
       status.currExercise.reps.forEach(rep => {
         exReps = exReps.concat(`${rep} - `);
       })
@@ -84,7 +82,7 @@ ngOnInit(): void {
     } else {
       // exercise type is countdown or countup
 
-      this.exInfo.concat(`${status.currExercise.countDownTimeInSecs} s`)
+      this.exInfo = this.exInfo.concat(`${status.currExercise.countDownTimeInSecs} s`)
     }
   }
 
@@ -94,11 +92,15 @@ ngOnInit(): void {
 
       case 'Regular':
       case 'Weights':
-        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${status.currRep}` ;
+        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${status.currRep + 1}` ;
         break;
 
       case 'CountDown':
         this.simulateRepCountDown(this.setRepInfo.nativeElement.innerText, status)
+        break;
+
+      case 'CountUp':
+        this.simulateRepCountUp(this.setRepInfo.nativeElement.innerText, status)
         break;
 
     }
@@ -108,7 +110,7 @@ ngOnInit(): void {
   simulateRepCountDown = (output: String, status: IStatus) => {
 
     if(!status.currExercise.countDownTimeInSecs) return;
-    this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${ status.currExercise.countDownTimeInSecs}` ;
+    this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${ status.currExercise.countDownTimeInSecs} s` ;
     setTimeout(() => {
       /* this runs every second. If counter reaches 0, this stops ticking */
       var repIntervalSecondCounter = status.currExercise.countDownTimeInSecs;
@@ -116,9 +118,30 @@ ngOnInit(): void {
         repIntervalSecondCounter -= 1;
         if(repIntervalSecondCounter == 0) {
           clearInterval(repInterval);
+          this.media.ringCompletionBell().subscribe();
         }
 
-        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter}` ;
+        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter} s` ;
+      }, 1000)
+    }, 45000)
+
+  }
+
+  simulateRepCountUp = (output: String, status: IStatus) => {
+
+    if(!status.currExercise.countDownTimeInSecs) return;
+    this.setRepInfo.nativeElement.innerText = `${status.currSet} - 0 s` ;
+    setTimeout(() => {
+      /* this runs every second. If counter reaches 0, this stops ticking */
+      var repIntervalSecondCounter = 0;
+      var repInterval = setInterval(() => {
+        repIntervalSecondCounter += 1;
+        if(repIntervalSecondCounter == status.currExercise.countDownTimeInSecs) {
+          clearInterval(repInterval);
+          this.media.ringCompletionBell().subscribe();
+        }
+
+        this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter} s` ;
       }, 1000)
     }, 45000)
 
@@ -133,6 +156,7 @@ ngOnInit(): void {
           break;
 
         case 'CountDown':
+        case 'CountUp':
           this.setWarmUp();
           break;
 

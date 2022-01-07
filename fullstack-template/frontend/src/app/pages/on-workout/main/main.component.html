@@ -6,7 +6,7 @@
   </div>
 
   <div class="vid-c" #vidContainer>
-    <video src="./../../assets/cactus.mp4" #videoPlayer (click)="startStopVideo()">
+    <video src="{{currVideoPath}}" #videoPlayer (click)="startStopVideo()">
     </video>
     <h1 class="timer-fsize bold warmUpText color-text--flurescent--red" #warmUpText></h1>
   </div>

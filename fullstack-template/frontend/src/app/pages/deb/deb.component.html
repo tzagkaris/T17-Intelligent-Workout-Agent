@@ -122,6 +122,18 @@
       <div class="btn btn-primary" (click)="setNewTime()">Set CountDown</div>
     </div>
 
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Misc.</h2>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+
+      <select name="difSelector" id="difSelector" #difSelector>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+        <option value="intense">Intense</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="setHeartRateBounds()">Set HeartRate intensity</div>
+    </div>
 
     <h2 class="infoHeader mar-block header-3 padding-top-2">Phone camera streaming ( Mirror ) Debugger.</h2>
 
