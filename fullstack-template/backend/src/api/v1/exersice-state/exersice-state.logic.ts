@@ -37,10 +37,13 @@ export class OnExersiceLogic {
 
   /* this is the array of exercises */
   public exerciseArray: IExercise[] = [
-    { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8], vpath: './../../assets/cactus.mp4'},
-    { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../assets/cactus.mp4' },
-    { name: 'Temporary 3' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
-    { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60, vpath: './../../assets/cactus.mp4' },
+    { name: 'Warm Up' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../../../assets/workout_vids/warm_up_edited.mp4' },
+    { name: 'Bicep Curls' , type: 'Weights', sets: 3, reps: [12, 10, 8], vpath: './../../assets/cactus.mp4'},
+    { name: 'Bicep Hammers' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../assets/cactus.mp4' },
+    { name: 'Diamond Pushups' , type: 'Weights', sets: 3, reps: [8, 6, 6], vpath: './../../assets/cactus.mp4' },
+    { name: 'Mountain Climbers' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
+    { name: 'Plank' , type: 'CountDown', sets: 3, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
+    { name: 'Post Workout Stretch' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../assets/cactus.mp4' },
   ];
 
   /* this is the current status */
