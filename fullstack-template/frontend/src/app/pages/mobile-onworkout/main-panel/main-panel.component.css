@@ -1,0 +1,85 @@
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.jessica-box{
+  display: flex;
+  justify-content: space-between;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.jessica-box img {
+  height: 50px;
+  width: 50px;
+  margin: 10px 6px 10px 10px;
+}
+
+
+.x {
+  display: flex;
+}
+
+p.para-2 {
+  margin: 0;
+}
+.jessica-box h3.header-3 {
+  margin: 0;
+  font-style: italic;
+}
+
+
+.round-corners--top{
+  border-radius: 5px 5px 0px 0px;
+}
+
+.footer-bar {
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.footer-bar img {
+  padding: 15px 0px;
+}
+
+.footer-icon img {
+  box-shadow: 0px 3px 0px #fff;
+}
+
+.text-rep {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 8px;
+}
+
+.onworkout-container {
+  margin: 160px 10px;
+}
+
+h4.header-4 {
+  margin: 6px;
+}
+
+.text-camera {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 22px 0px;
+}
+
+.text-set-rep {
+  display: flex;
+  justify-content: space-around;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-around;
+  font-size: 60px;
+  font-weight: 500;
+}
