@@ -1,0 +1,8 @@
+.body-inner {
+  background-image: url(./../../../assets/background-mobile-onworkout.png);
+  width: 375px;
+}
+body {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,20 @@
+.body-inner {
+  background-image: url(./../../../assets/mobile-index-background.png);
+  width: 375px;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.hello-text {
+  text-align: center;
+}
+
+.hello-text p{
+  font-size: 28px;
+}
+
+.name-tone {
+  font-weight: 600;
+}

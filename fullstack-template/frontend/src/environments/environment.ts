@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   /* set the bellow to your local ip in order for other devices to be able to connect to backend */
-  host: 'http://192.168.1.10:8080',
+  host: 'http://192.168.2.16:8080',
+
 };
 
 /*
