@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
 import { VoiceAssistantService } from 'src/app/global/services/assistant/voice-assistant.service';
@@ -11,9 +11,20 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
 })
 export class LeftwallComponent implements OnInit{
 
-  constructor(private vas: VoiceAssistantService) {}
+  @ViewChild('bellAudioRef', {static: true}) bellAudioRef: ElementRef;
+
+  constructor(private vas: VoiceAssistantService, private sock: SocketsService) {}
 
   ngOnInit(): void {
-      this.vas.init();
+      //this.vas.init();
+
+      this.sock.syncMessages('media/bell').subscribe((msg) => {
+        this.playSound();
+      })
   }
+
+  playSound() {
+    this.bellAudioRef.nativeElement.play();
+  }
+
 }

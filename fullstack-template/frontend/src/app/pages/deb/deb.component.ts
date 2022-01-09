@@ -36,6 +36,14 @@ export class DebComponent implements OnInit, AfterViewInit {
   musicSelection: HTMLSelectElement;
   volumeSelection: HTMLSelectElement;
 
+  @ViewChild('timeSelector', {static: true}) timeSelectorRef: ElementRef;
+  @ViewChild('repSelector', {static: true}) repSelectorRef: ElementRef;
+  repSelector: HTMLSelectElement;
+  timeSelector: HTMLSelectElement;
+
+  @ViewChild('difSelector', {static: true}) difSelectorRef: ElementRef;
+  difSelector: HTMLSelectElement;
+
   tempSong: ISong = {
     name: 'no info',
     artist: 'no info',
@@ -60,7 +68,7 @@ export class DebComponent implements OnInit, AfterViewInit {
               private socketService: SocketsService) {
 
     this.currentExerciseState = {
-      currExercise: { name: "No Data", type: "none"},
+      currExercise: { name: "No Data", type: "none", vpath: ''},
       exerciseNo: 0,
       currSet: 1,
       currRep: 0,
@@ -107,6 +115,10 @@ export class DebComponent implements OnInit, AfterViewInit {
     this.musicSelection = this.musicSelectionRef.nativeElement;
     this.volumeSelection = this.volumeSelectionRef.nativeElement;
 
+    this.repSelector = this.repSelectorRef.nativeElement;
+    this.timeSelector = this.timeSelectorRef.nativeElement;
+
+    this.difSelector = this.difSelectorRef.nativeElement;
 
     /* STREAMING VIDEO FEED */
     this.video.addEventListener('canplay', () => {
@@ -277,5 +289,28 @@ export class DebComponent implements OnInit, AfterViewInit {
 
   public pauseWorkout = () => {
     this.exStateService.pauseWorkout().subscribe();
+  }
+
+  public setNewReps = () => {
+    let reps = parseInt(this.repSelector.value);
+    this.exStateService.newReps(reps).subscribe();
+  }
+
+  public setNewTime = () => {
+    let time = parseInt(this.timeSelector.value);
+    this.exStateService.newTime(time).subscribe();
+  }
+
+  public setHeartRateBounds = () => {
+
+    let dif = {
+      'normal': {inc: 3, dec: 3},
+      'hard': {inc: 5, dec: 3},
+      'intense': {inc: 7, dec: 3},
+    }
+
+    let val = dif[this.difSelector.value];
+
+    this.exStateService.incHeartRateOffset(val.inc, val.dec).subscribe();
   }
 }

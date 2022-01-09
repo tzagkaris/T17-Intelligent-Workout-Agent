@@ -24,6 +24,7 @@ export interface IExerciseOptional {
 export interface IExercise {
   name: string;
   type: string;
+  vpath: string;
   sets?: number;
   reps?: number[];
   countDownTimeInSecs?: number;

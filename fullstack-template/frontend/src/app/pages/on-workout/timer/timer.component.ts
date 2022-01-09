@@ -23,6 +23,9 @@ export class TimerComponent implements OnInit, AfterViewInit {
   workoutSecs: number;
   HeartRating: number;
 
+  HEART_RATE_INC_OFFSET: number = 3;
+  HEART_RATE_DEC_OFFSET: number = 3;
+
   notPaused: boolean = true;
 
   constructor(private sock: SocketsService) {}
@@ -51,6 +54,11 @@ export class TimerComponent implements OnInit, AfterViewInit {
     this.sock.syncMessages('exercise/pause').subscribe((msg) => {
       this.notPaused = !this.notPaused;
       this.changePausePlayImage();
+    })
+
+    this.sock.syncMessages('exercise/hinc').subscribe((msg) => {
+      this.HEART_RATE_DEC_OFFSET = msg.message.decOffset;
+      this.HEART_RATE_INC_OFFSET = msg.message.incOffset;
     })
   }
 
@@ -95,7 +103,8 @@ export class TimerComponent implements OnInit, AfterViewInit {
     if(this.notPaused) {
 
       let lastReading = this.HeartRating;
-      this.HeartRating = this.generateBetween(this.HeartRating - 3, this.HeartRating + 3);
+      this.HeartRating =
+      this.generateBetween(this.HeartRating - this.HEART_RATE_DEC_OFFSET, this.HeartRating + this.HEART_RATE_INC_OFFSET);
 
       if(this.HeartRating < 60)
         this.HeartRating = this.HeartRating + 10;

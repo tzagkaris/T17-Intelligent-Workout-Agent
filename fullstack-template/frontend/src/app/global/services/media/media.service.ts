@@ -124,4 +124,9 @@ export class MediaService {
 
     return this.http.delete(`${this.hostURI}/api/media/music`);
   }
+
+  public ringCompletionBell = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/bell`);
+  }
 }
