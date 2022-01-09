@@ -1,0 +1,134 @@
+.body-inner {
+    background-image: url(./../../assets/background-mobile-onworkout.png);
+    width: 375px;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.jessica-box{
+    display: flex;
+    justify-content: space-between;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.jessica-box img {
+    height: 50px;
+    width: 50px;
+    margin: 10px 6px 10px 10px;
+}
+
+
+.x {
+    display: flex;
+}
+
+p.para-2 {
+    margin: 0;
+}
+.jessica-box h3.header-3 {
+    margin: 0;
+    font-style: italic;
+}
+
+
+.round-corners--top{
+    border-radius: 5px 5px 0px 0px;
+}
+
+.footer-bar {
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.footer-bar img {
+    padding: 15px 0px;
+}
+
+.footer-icon img {
+    box-shadow: 0px 3px 0px #fff;
+}
+
+
+
+h4.header-4 {
+    margin: 6px;
+}
+
+
+
+.text18 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.today-box {
+    margin: 40px 10px;
+}
+
+.exercise-box {
+    display: flex;
+    justify-content: space-between;
+    margin:20px 12px;
+}
+
+.exercise-box img {
+    margin: 9px 8px;
+}
+.exercise-box h4 {
+    margin: 9px 8px;
+}
+
+.first-title h4 {
+    margin: 8px 12px;
+    padding: 10px 0px 15px 0px;
+}
+
+
+.symbols-line-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 12px;
+    align-items: center;
+    padding-bottom: 20px; 
+}
+
+.plus-rounded h2 {
+    padding: 5px 11px;
+    margin: 0;
+}
+.interval-container {
+    display: flex;
+    align-items: center;
+}
+
+.interval-container h4 {
+    margin: 0px 20px;
+}
+
+.leftie {
+    border-radius: 5px 0px 0px 5px;
+}
+
+
+.rightie {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.tomorrow-box .text18 {
+    text-align: end;
+}
+
+.exercise {
+    margin: 20px 11px 20px 6px;
+    padding-bottom: 6px;
+}
+
+.tomorrow-box {
+    margin: 32px 10px;
+}
