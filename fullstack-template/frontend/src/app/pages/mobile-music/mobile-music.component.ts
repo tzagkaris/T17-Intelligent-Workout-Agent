@@ -11,9 +11,8 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
 })
 export class MobileMusicComponent implements OnInit{
 
-  constructor(private vas: VoiceAssistantService) {}
+  constructor() {}
 
   ngOnInit(): void {
-      this.vas.init();
   }
 }
