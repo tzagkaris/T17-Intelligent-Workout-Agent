@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocketsService } from 'src/app/global/services';
 import { IMirrorBundle, MediaService } from 'src/app/global/services/media/media.service';
 
@@ -21,13 +22,20 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
   mirrorDeviceName: string = 'Unset';
 
 
-  constructor(private media: MediaService, private socketService: SocketsService) {}
+  constructor(private media: MediaService, private socketService: SocketsService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.ClosedState = false;
   }
 
   ngAfterViewInit(): void {
+
+    /* navigate to center-wall by voice assistant command */
+    this.socketService.syncMessages('exercise/end').subscribe((msg) => {
+
+      this.router.navigateByUrl('/center-wall');
+    })
 
     /* dynamicaly add a video source to page */
     this.socketService.syncMessages('secondary-video').subscribe((msg) => {
@@ -55,7 +63,7 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
   }
 
   removeMirror = () => {
-
+    this.mirrorState = false;
   }
 
   removeMediaVideo = () => {
