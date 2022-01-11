@@ -28,6 +28,7 @@ interface IExercise {
   sets?: number;
   reps?: number[];
   countDownTimeInSecs?: number;
+  imageRef: string,
   optional?: IExerciseOptional;
 }
 
@@ -37,13 +38,13 @@ export class OnExersiceLogic {
 
   /* this is the array of exercises */
   public exerciseArray: IExercise[] = [
-    { name: 'Warm Up' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../../../assets/workout_vids/warm_up_edited.mp4' },
-    { name: 'Bicep Curls' , type: 'Weights', sets: 3, reps: [12, 10, 8], vpath: './../../assets/cactus.mp4'},
-    { name: 'Bicep Hammers' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../assets/cactus.mp4' },
-    { name: 'Diamond Pushups' , type: 'Weights', sets: 3, reps: [8, 6, 6], vpath: './../../assets/cactus.mp4' },
-    { name: 'Mountain Climbers' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
-    { name: 'Plank' , type: 'CountDown', sets: 3, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
-    { name: 'Post Workout Stretch' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../assets/cactus.mp4' },
+    { name: 'Warm Up' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../../../assets/workout_vids/warm_up_edited.mp4', imageRef: './../../../../assets/thumbnails/warm_up_down.svg' },
+    { name: 'Bicep Curls' , type: 'Weights', sets: 3, reps: [12, 10, 8], vpath: './../../../../assets/workout_vids/bicep_curls_edited.mp4', imageRef: './../../../../assets/thumbnails/b_curls.svg'},
+    { name: 'Bicep Hammers' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../../../assets/workout_vids/bicep_hammers_edited.mp4' , imageRef: './../../../../assets/thumbnails/b_hammers.svg'},
+    { name: 'Diamond Pushups' , type: 'Weights', sets: 3, reps: [8, 6, 6], vpath: './../../../../assets/workout_vids/diamond_pushups_edited.mp4' , imageRef: './../../../../assets/thumbnails/diamond_pushups.svg'},
+    { name: 'Mountain Climbers' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../../../assets/workout_vids/mountain_climbers_edited.mp4' , imageRef: './../../../../assets/thumbnails/mountain_climbers.svg'},
+    { name: 'Plank' , type: 'CountDown', sets: 2, countDownTimeInSecs: 30, vpath: './../../../../assets/workout_vids/plank_edited.mp4' , imageRef: './../../../../assets/thumbnails/plank.svg'},
+    { name: 'Stretch' , type: 'CountDown', sets: 1, countDownTimeInSecs: 180, vpath: './../../../../assets/workout_vids/post_workout_edited.mp4' , imageRef: './../../../../assets/thumbnails/warm_up_down.svg'},
   ];
 
   /* this is the current status */

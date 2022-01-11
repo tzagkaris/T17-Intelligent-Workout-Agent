@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
       name : 'none',
       type : 'none',
       vpath: 'none',
+      imageRef: ''
     }
   };
 
@@ -143,7 +144,7 @@ ngOnInit(): void {
 
         this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter} s` ;
       }, 1000)
-    }, 45000)
+    }, 30000)
 
   }
 

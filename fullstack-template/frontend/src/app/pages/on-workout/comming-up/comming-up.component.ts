@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { isElement } from 'lodash';
 import { IExercise, IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
@@ -25,13 +25,8 @@ export class CommingUpComponent implements AfterViewInit {
 
   finalArray: IFinalEx[] = [];
 
-  workoutImagePaths: String[] = [
-    './../../assets/bicepcurls.png',
-    './../../assets/bicepcurls.png',
-    './../../assets/bicepcurls.png'
-  ]
-
   allExercises: IExercise[] = [];
+  @Output() removeMe = new EventEmitter();
 
   ngAfterViewInit(): void {
 
@@ -59,6 +54,11 @@ export class CommingUpComponent implements AfterViewInit {
       if(elem.index <= state.exerciseNo)
         this.finalArray = this.finalArray.filter(fl => fl.index != elem.index);
     })
+
+    if(!this.finalArray.length) {
+      console.log(1)
+      this.removeMe.emit(1);
+    }
   }
 
   getFinalExersiceArray = (originalArray: IExercise[]) => {
@@ -73,6 +73,7 @@ export class CommingUpComponent implements AfterViewInit {
       };
 
       finalArrayEntry.name = elem.name;
+      finalArrayEntry.imageRef = elem.imageRef;
 
       if(elem.sets && elem.reps) {
         finalArrayEntry.rs = `${elem.sets} x `;
@@ -86,7 +87,6 @@ export class CommingUpComponent implements AfterViewInit {
         finalArrayEntry.rs = `${elem.sets} x ${elem.countDownTimeInSecs} s`;
       }
 
-      finalArrayEntry.imageRef = this.workoutImagePaths[index];
       finalArrayEntry.index = index;
 
       this.finalArray.push(finalArrayEntry);

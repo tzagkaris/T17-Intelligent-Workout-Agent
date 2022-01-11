@@ -68,7 +68,7 @@ export class DebComponent implements OnInit, AfterViewInit {
               private socketService: SocketsService) {
 
     this.currentExerciseState = {
-      currExercise: { name: "No Data", type: "none", vpath: ''},
+      currExercise: { name: "No Data", type: "none", vpath: '', imageRef: ''},
       exerciseNo: 0,
       currSet: 1,
       currRep: 0,
@@ -77,8 +77,9 @@ export class DebComponent implements OnInit, AfterViewInit {
   }
 
   mediaVideosArray = {
-    cactus: {name: 'Cactus Meme Video', path: './../../../../assets/cactus.mp4'},
-    another: {name: 'Another Video', path: './../../../../assets/video0_1.mp4'}
+    funnyCats: {name: 'Funny Cats Compilation', path: './../../../../assets/sec_media/Funny Cats.mp4'},
+    topGear: {name: 'Top Gear - Racing across St. Petersburg', path: './../../../../assets/sec_media/Top Gear.mp4'},
+    techLinked: {name: 'Tech Linked news', path: './../../../../assets/sec_media/Techlicked - news.mp4'}
   }
 
   secondaryMediaState: ISecondaryMediaState = {

@@ -21,6 +21,7 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
   mirrorBundle: IMirrorBundle = undefined;
   mirrorDeviceName: string = 'Unset';
 
+  commingUpClose: boolean = true;
 
   constructor(private media: MediaService, private socketService: SocketsService,
     private router: Router) {}
@@ -68,6 +69,11 @@ export class OnWorkoutComponent implements OnInit, AfterViewInit{
 
   removeMediaVideo = () => {
     this.ClosedState = false;
+  }
+
+  removeCommingUp = () => {
+    console.log(1)
+    this.commingUpClose = false;
   }
 }
 

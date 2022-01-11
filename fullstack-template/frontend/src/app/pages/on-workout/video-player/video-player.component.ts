@@ -28,6 +28,9 @@ export class VideoPlayerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     let video = this.videoPlayer.nativeElement;
 
+    let pauseBtn = this.controlPause.nativeElement;
+    pauseBtn.setAttribute('src', "./../../../../assets/player-play.svg")
+
     // add video source as specified at @Input
     this.videoSource.subscribe((src) => {
       video.setAttribute('src', src);
