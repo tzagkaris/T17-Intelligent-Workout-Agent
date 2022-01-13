@@ -1,8 +1,12 @@
+
+
 .body-inner {
-  background-image: url(./../../../assets/background-mobile-onworkout.png);
-  width: 375px;
+  width: 100vh;
+
 }
 body {
+  background-image: url(./../../../assets/background-mobile-onworkout.png);
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
 }

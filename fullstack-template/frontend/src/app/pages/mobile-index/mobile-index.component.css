@@ -1,8 +1,12 @@
+
 .body-inner {
-  background-image: url(./../../../assets/mobile-index-background.png);
-  width: 375px;
+  width: 100vh;
+  height: 100vh;
+
 }
 body {
+  background-image: url(./../../../assets/mobile-index-background.png);
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
 }
@@ -18,3 +22,4 @@ body {
 .name-tone {
   font-weight: 600;
 }
+

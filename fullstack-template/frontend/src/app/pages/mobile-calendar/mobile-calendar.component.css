@@ -1,8 +1,10 @@
 .body-inner {
-  background-image: url(./../../../assets/background-mobile-onworkout.png);
-  width: 375px;
+  width: 100vh;
+  
 }
 body {
+  background-image: url(./../../../assets/background-mobile-onworkout.png);
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
 }
@@ -44,6 +46,10 @@ p.para-2 {
 .footer-bar {
   justify-content: space-evenly;
   display: flex;
+  position: fixed;
+    bottom: 0;
+    /* min-width: -webkit-fill-available; */
+    width: -webkit-fill-available;
 }
 
 .footer-bar img {
@@ -132,3 +138,4 @@ h4.header-4 {
 .tomorrow-box {
   margin: 32px 10px;
 }
+

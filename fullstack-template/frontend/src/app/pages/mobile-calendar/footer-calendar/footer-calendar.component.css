@@ -112,12 +112,17 @@ p.para-2 {
 .footer-bar {
   justify-content: space-evenly;
   display: flex;
+  position: fixed;
+    bottom: 0;
+    /* min-width: -webkit-fill-available; */
+    width: -webkit-fill-available;
 }
 
 .footer-bar img {
   padding: 15px 0px;
 }
 
-.footer-icon img {
-  box-shadow: 0px 3px 0px #fff;
+
+.footer-icon   img {
+  border-bottom-style: ridge;
 }

@@ -112,6 +112,9 @@ p.para-2 {
 .footer-bar {
   justify-content: space-evenly;
   display: flex;
+  position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-bar img {

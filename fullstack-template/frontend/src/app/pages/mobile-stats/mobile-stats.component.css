@@ -1,8 +1,11 @@
+
 .body-inner {
-  background-image: url(./../../../assets/mobile-index-background.png);
-  width: 375px;
+  width: 100vh;
+  height: 100vh;
 }
 body {
+
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
 }
@@ -136,5 +139,5 @@ p.para-2 {
 }
 
 .all-boxes {
-  margin: 120px 0px;
+  margin: 25vh  0px;
 }

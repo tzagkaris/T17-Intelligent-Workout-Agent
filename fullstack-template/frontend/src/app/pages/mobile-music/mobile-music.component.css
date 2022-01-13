@@ -1,11 +1,15 @@
+
 .body-inner {
-  background-image: url(./../../../assets/mobile-index-background.png);
-  width: 375px;
+  width: 100vh;
+  height: 100vh;
 }
 body {
+  background-image: url(./../../../assets/mobile-index-background.png);
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
 }
+
 
 .jessica-box{
   display: flex;
@@ -106,5 +110,5 @@ p.para-2 {
 }
 
 .all-music {
-  margin: 150px 0px;
+  margin: 25vh 0px;
 }
