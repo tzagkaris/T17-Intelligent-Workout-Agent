@@ -237,6 +237,18 @@ public getSongList = (req: Request, res: Response, next: NextFunction) => {
     res.status(200).send();
   }
 
+  public ringBell = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastBellRing();
+    res.status(200).send();
+  }
+
+  public broadcastBellRing = () => {
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('media/bell', '1');
+  }
+
   public broadcastMusicState = () => {
 
     const cs = DIContainer.get(SocketsService);

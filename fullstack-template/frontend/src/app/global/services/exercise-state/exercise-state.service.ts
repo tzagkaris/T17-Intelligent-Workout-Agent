@@ -13,6 +13,21 @@ export class ExerciseStateService {
     this.hostURI = environment.host;
   }
 
+  /* call this to inform center-wall to go to on-workout screen */
+  public startWorkout() {
+
+    return this.http.get(`${this.hostURI}/api/exercise/start`);
+  }
+
+  /* call this to inform on-workout to abort and return to center wall */
+  public endWorkout() {
+    return this.http.get(`${this.hostURI}/api/exercise/end`);
+  }
+
+  public pauseWorkout() {
+    return this.http.get(`${this.hostURI}/api/exercise/pause`);
+  }
+
   public fetchExerciseState() {
     return this.http.post(`${this.hostURI}/api/exercise/state`, { event: "exercise-state"});
   }
@@ -30,5 +45,20 @@ export class ExerciseStateService {
   public getExersiceArray() {
 
     return this.http.get(`${this.hostURI}/api/exercise/exersices`);
+  }
+
+  public newReps(newReps: number) {
+
+    return this.http.post(`${this.hostURI}/api/exercise/chageReps`, {newReps: newReps});
+  }
+
+  public newTime(newTime: number) {
+
+    return this.http.post(`${this.hostURI}/api/exercise/chageTime`, {newTime: newTime})
+  }
+
+  public incHeartRateOffset(incOffset: number, decOffset: number) {
+
+    return this.http.post(`${this.hostURI}/api/exercise/hinc`, {incOffset: incOffset, decOffset: decOffset});
   }
 }

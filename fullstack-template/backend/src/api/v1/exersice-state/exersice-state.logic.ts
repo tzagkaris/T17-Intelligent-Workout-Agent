@@ -1,5 +1,6 @@
 import { DIContainer, SocketsService } from '@app/services';
 import { Request, Response, NextFunction, Router } from 'express';
+import { MediaLogic } from './../media/media.logic';
 
 interface IStatusOptional {
   tmp: number;
@@ -23,6 +24,7 @@ interface IExerciseOptional {
 interface IExercise {
   name: string;
   type: string;
+  vpath: string;
   sets?: number;
   reps?: number[];
   countDownTimeInSecs?: number;
@@ -31,11 +33,14 @@ interface IExercise {
 
 export class OnExersiceLogic {
 
+  constructor(private mediaLogic: MediaLogic) {}
+
   /* this is the array of exercises */
   public exerciseArray: IExercise[] = [
-    { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8] },
-    { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8] , optional: { weightUsed: []} },
-    { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60 },
+    { name: 'Temporary 1' , type: 'Regular', sets: 3, reps: [12, 10, 8], vpath: './../../assets/cactus.mp4'},
+    { name: 'Temporary 2' , type: 'Weights', sets: 4, reps: [10, 10, 8, 8], vpath: './../../assets/cactus.mp4' },
+    { name: 'Temporary 3' , type: 'CountUp', sets: 2, countDownTimeInSecs: 30, vpath: './../../assets/cactus.mp4' },
+    { name: 'Temporary 3' , type: 'CountDown', sets: 2, countDownTimeInSecs: 60, vpath: './../../assets/cactus.mp4' },
   ];
 
   /* this is the current status */
@@ -44,7 +49,7 @@ export class OnExersiceLogic {
     exerciseNo: 0,
     currSet: 1,
     currRep: 0,
-    condition: "ongoing",
+    condition: "not started",
   };
 
   public getExersiceArray = (req: Request, res: Response, next: NextFunction) => {
@@ -66,19 +71,25 @@ export class OnExersiceLogic {
       res.send('ok');
       return;
     }
-
+    let finished: string| undefined = undefined;
     switch(this.status.currExercise.type) {
+
+
       case 'Regular':
       case 'Weights':
-        this.incRepRegular();
+        finished = this.incRepRegular();
         break;
 
       case 'CountDown':
-        this.incRepCountDown();
+      case 'CountUp':
+        finished = this.incRepCountDown();
         break;
     }
     /*  */
+
     this.broadcastState(req.body.event);
+
+    if(finished) this.broadcastWorkoutEnd();
     res.send(this.status);
   }
 
@@ -89,7 +100,7 @@ export class OnExersiceLogic {
       exerciseNo: 0,
       currSet: 1,
       currRep: 0,
-      condition: "ongoing",
+      condition: "not started",
     };
 
     this.broadcastState("exercise-state");
@@ -107,7 +118,7 @@ export class OnExersiceLogic {
 
 
 
-  public incRepRegular = () => {
+  public incRepRegular = (): string | undefined => {
     const exCap = this.exerciseArray.length;
     const cSet = this.status.currSet;
     const cRep = this.status.currRep;
@@ -116,6 +127,12 @@ export class OnExersiceLogic {
     let repsCapped:boolean = false;
     let setsCapped:boolean = false;
     let exCapped:boolean = false;
+
+    // smol addition ( ring bell if this is the last rep)
+    if(cRep === this.status.currExercise.reps[cSet - 1] - 2) {
+      this.mediaLogic.broadcastBellRing();
+      console.log(1);
+    }
 
     // check if reps are capped
     if(cRep === this.status.currExercise.reps[cSet - 1] - 1)
@@ -133,6 +150,7 @@ export class OnExersiceLogic {
     if(repsCapped && setsCapped && exCapped) {
 
       this.status.condition = 'finished';
+      return this.status.condition;
     }
     // next exercise
     else if(repsCapped && setsCapped && !exCapped) {
@@ -151,9 +169,11 @@ export class OnExersiceLogic {
     // next Rep
     else
       ++this.status.currRep;
+
+      return undefined;
   }
 
-  public incRepCountDown = () => {
+  public incRepCountDown = (): string | undefined => {
 
     const exCap = this.exerciseArray.length;
     const cSet = this.status.currSet;
@@ -174,6 +194,7 @@ export class OnExersiceLogic {
     if(setsCapped && exCapped) {
 
       this.status.condition = 'finished';
+      return this.status.condition;
     }
     // next exercise
     else if(setsCapped && !exCapped) {
@@ -186,15 +207,123 @@ export class OnExersiceLogic {
     else
       ++this.status.currSet;
 
+    return undefined;
+  }
+
+  public changeReps = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.newReps) {
+      next('no newReps found in request.');
+      return;
+    }
+
+    let newReps = parseInt(req.body.newReps);
+    if(newReps < 1 || newReps > 50) {
+      next('invalid newReps range.');
+      return;
+    }
+
+    /* ignore if currExercise does not have reps */
+    if(this.status.currExercise.reps) {
+      this.status.currExercise.reps[this.status.currSet - 1] = newReps;
+
+      this.broadcastState("exercise-state");
+    }
+    res.status(200).send();
+  }
+
+  public changeTime = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.newTime) {
+      next('no newTime found in request');
+      return;
+    }
+
+    let newTime = parseInt(req.body.newTime);
+    if(newTime < 0 || newTime > 500) {
+      next('invalid newTime range');
+      return;
+    }
+
+    /* ignore if currExercise does not have countDown */
+    if(this.status.currExercise.countDownTimeInSecs) {
+      this.status.currExercise.countDownTimeInSecs = newTime;
+
+      this.broadcastState("exercise-state");
+    }
+
+      res.status(200).send();
+  }
+
+  public incHeartRate = (req: Request, res: Response, next: NextFunction) => {
+
+    if(!req.body.incOffset || !req.body.decOffset) {
+      next('no incOffset found in request');
+      return;
+    }
+
+    let incOffset = parseInt(req.body.incOffset);
+    let decOffset = parseInt(req.body.decOffset);
+
+    this.broadcastNewOffset(incOffset, decOffset);
+
+    res.status(200).send();
+  }
+
+  public signalWorkoutStart = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutStart();
+    res.status(200).send();
+  }
+
+  public signalWorkoutEnd = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutEnd();
+    res.status(200).send();
+  }
+
+  public signalWorkoutPause = (req: Request, res: Response, next: NextFunction) => {
+
+    this.broadcastWorkoutPause();
+    res.status(200).send();
   }
 
   public getStateOnError = (err: Error, req: Request, res: Response, next: NextFunction) => {
-    res.send('error');  // may do something fancy later on
+    res.send({'error' : err});
   }
 
   public broadcastState = (event: string) => {
 
     const cs = DIContainer.get(SocketsService);
     cs.broadcast(event, this.status);
+  }
+
+  public broadcastWorkoutStart = () => {
+
+    this.status.condition = 'on workout';
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/start', this.status.condition);
+  }
+
+  public broadcastWorkoutEnd = () => {
+
+    this.status.condition = 'finished';
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/end', this.status.condition);
+  }
+
+  public broadcastWorkoutPause = () => {
+
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/pause', this.status.condition);
+  }
+
+  public broadcastNewOffset = (inc: number, dec: number) => {
+
+    const cs = DIContainer.get(SocketsService);
+    cs.broadcast('exercise/hinc', {incOffset: inc, decOffset: dec});
   }
 }

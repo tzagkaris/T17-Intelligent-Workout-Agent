@@ -80,11 +80,21 @@ export class MediaService {
     return this.http.get<IMusicState>(`${this.hostURI}/api/media/music`);
   }
 
+  /* returns an array of ISong ( see interfaces above ) */
   public getMusicTrackList = () => {
 
     return this.http.get(`${this.hostURI}/api/media/music/list`);
   }
 
+
+  /**
+   *    Call this to start music on selected track.
+   *    Result is propageted by music/state event. Function just returns ok.
+   *   Do not forget to subscibe to the result or else angular does not send the request.
+   *   No need to do anything with the result.
+   *
+   *   ex. this.media.setMusicPlaying().subscibe()
+   */
   public setMusicPlaying = () => {
 
     return this.http.get(`${this.hostURI}/api/media/music/play`);
@@ -113,5 +123,10 @@ export class MediaService {
   public resetMusicState = () => {
 
     return this.http.delete(`${this.hostURI}/api/media/music`);
+  }
+
+  public ringCompletionBell = () => {
+
+    return this.http.get(`${this.hostURI}/api/media/bell`);
   }
 }

@@ -10,5 +10,12 @@ import { SocketsService } from 'src/app/global/services';
 })
 export class MobileMusicComponent {
 
+ 
 
+
+  constructor() {}
+
+  ngOnInit(): void {
+  }
+ 
 }

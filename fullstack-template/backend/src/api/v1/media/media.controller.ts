@@ -85,6 +85,11 @@ export class MediaController {
       this.logic.onError
     )
 
+    router.get('/bell',
+      this.logic.ringBell,
+      this.logic.onError
+    )
+
     return router;
   }
 }

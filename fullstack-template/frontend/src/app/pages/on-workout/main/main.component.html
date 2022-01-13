@@ -6,13 +6,13 @@
   </div>
 
   <div class="vid-c" #vidContainer>
-    <video src="./../../assets/cactus.mp4" #videoPlayer (click)="startStopVideo()">
+    <video src="{{currVideoPath}}" #videoPlayer (click)="startStopVideo()">
     </video>
     <h1 class="timer-fsize bold warmUpText color-text--flurescent--red" #warmUpText></h1>
   </div>
 
   <div class="video-player-footer padding-2">
-    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">{{currStatus.currExercise.name}}</h1>
+    <h1 class="pm-0 header-1 padding-in-2 color-text--swhite">{{exInfo}}</h1>
     <h1 class="pm-0 header-1 padding-in-2 color-text--swhite" #exSetRepInfo></h1>
   </div>
 </div>

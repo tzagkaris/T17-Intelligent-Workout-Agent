@@ -63,6 +63,10 @@
   background-color: rgb(209, 209, 209);
 }
 
+.btn-red {
+  background-color: rgb(224, 111, 107);
+}
+
 .btn-trid {
   background-color: goldenrod;
   border-color: goldenrod;

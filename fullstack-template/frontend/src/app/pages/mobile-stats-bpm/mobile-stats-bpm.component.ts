@@ -11,5 +11,12 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
 })
 export class MobileStatsBpmComponent {
 
+ 
 
+
+  constructor() {}
+
+  ngOnInit(): void {
+  }
+ 
 }

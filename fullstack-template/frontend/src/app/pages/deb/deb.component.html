@@ -86,6 +86,54 @@
       <div class="btn btn-primary" (click)="changeVolume()">Set Vol</div>
     </div>
 
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Voice assistant debugger.</h2>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+      <div class="btn btn-primary" (click)="startWorkout()">Start Workout</div>
+      <div class="btn btn-red"(click)="endWorkout()">Abort Workout</div>
+      <div class="btn btn-secondary"(click)="pauseWorkout()">Pause Workout</div>
+    </div>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+
+      <select name="repSelector" id="repSelector" #repSelector>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10" selected>10</option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="16">16</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="setNewReps()">Set current reps</div>
+    </div>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+
+      <select name="timeSelector" id="timeSelector" #timeSelector>
+        <option value="30">30 s</option>
+        <option value="40">40 s</option>
+        <option value="45">45 s</option>
+        <option value="60" selected>60 s</option>
+        <option value="75">75 s</option>
+        <option value="85">85 s</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="setNewTime()">Set CountDown</div>
+    </div>
+
+    <h2 class="infoHeader mar-block header-3 padding-top-2">Misc.</h2>
+
+    <div id="button-container" class="flex-row align-equal mar-top">
+
+      <select name="difSelector" id="difSelector" #difSelector>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+        <option value="intense">Intense</option>
+      </select>
+
+      <div class="btn btn-primary" (click)="setHeartRateBounds()">Set HeartRate intensity</div>
+    </div>
 
     <h2 class="infoHeader mar-block header-3 padding-top-2">Phone camera streaming ( Mirror ) Debugger.</h2>
 

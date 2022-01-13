@@ -10,5 +10,12 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
 })
 export class MobileStatsCalComponent {
 
+ 
 
+
+  constructor() {}
+
+  ngOnInit(): void {
+  }
+ 
 }
