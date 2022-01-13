@@ -1,8 +1,9 @@
 .body-inner {
-  background-image: url(./../../../assets/mobile-index-background.png);
-  width: 375px;
+
+  width: 100vh;
 }
 body {
+  background-image: url(./../../../assets/mobile-index-background.png);
   display: flex;
   justify-content: center;
 }
@@ -53,6 +54,7 @@ p.para-2 {
 .footer-bar {
   justify-content: space-evenly;
   display: flex;
+
 }
 
 .footer-bar img {
@@ -136,5 +138,5 @@ p.para-2 {
 }
 
 .all-boxes {
-  margin: 120px 0px;
+  margin: 20vh 0px;
 }
