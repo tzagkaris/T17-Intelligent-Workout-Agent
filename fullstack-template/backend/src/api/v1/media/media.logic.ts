@@ -115,7 +115,8 @@ export class MediaLogic {
     {name: 'Venom', artist: "Eminem", duration: "4:31", filepath: "./../../../../assets/music/Eminem - Venom.mp3"},
     {name: 'Without Me', artist: "Eminem", duration: "4:52", filepath: "./../../../../assets/music/Eminem - Without Me.mp3"},
     {name: 'Killshot', artist: "Eminem", duration: "4:14", filepath: "./../../../../assets/music/Eminem - Killshot.mp3"},
-    {name: 'Milli Rocks', artist: "D4DJ x Magnolia", duration: "2:48", filepath: "./../../../../assets/music/D4DJ opening x Magnolia.mp3"},
+    {name: 'Godzilla', artist: "Eminem", duration: "3:31", filepath: "./../../../../assets/music/Eminem - Godzilla.mp3"},
+    {name: 'Rap God', artist: "Eminem", duration: "6:11", filepath: "./../../../../assets/music/Eminem - Rap God.mp3"},
   ]
 
   /* initial state */

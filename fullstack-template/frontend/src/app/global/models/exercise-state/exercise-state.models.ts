@@ -28,6 +28,7 @@ export interface IExercise {
   sets?: number;
   reps?: number[];
   countDownTimeInSecs?: number;
+  imageRef: string;
   optional?: IExerciseOptional;
 }
 

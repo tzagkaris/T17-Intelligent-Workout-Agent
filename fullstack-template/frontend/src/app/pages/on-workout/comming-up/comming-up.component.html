@@ -6,7 +6,7 @@
 
     <div class="exersice-entry round-corners--primary color-br--shade--dark" *ngFor="let entry of finalArray">
       <div class="image-cont">
-        <img src="./../../assets/bicepcurls.png" alt="exersice specific ( Hammer Curls ) icon">
+        <img src="{{entry.imageRef}}" alt="exersice specific icon">
       </div>
       <div class="workoutcount-container color-br--swhite">
         <h2 class="pm-0 header-4">{{ entry.index + 1 }}</h2>

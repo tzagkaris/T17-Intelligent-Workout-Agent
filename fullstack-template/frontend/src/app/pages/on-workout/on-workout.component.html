@@ -18,7 +18,8 @@
     <!-- this is a dynamic player / gets "toggled" if needed be -->
     <secondary-video *ngIf="ClosedState" [videoInfo]="videoInfoEmitter.asObservable()" (removeMe)="removeMediaVideo()"></secondary-video>
 
-    <comming-up></comming-up>
+    <!-- this one get removed if final array is empty-->
+    <comming-up *ngIf="commingUpClose" (removeMe)="removeCommingUp()"></comming-up>
   </div>
 </body>
 </html>

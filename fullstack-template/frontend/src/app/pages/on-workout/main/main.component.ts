@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
       name : 'none',
       type : 'none',
       vpath: 'none',
+      imageRef: ''
     }
   };
 
@@ -123,7 +124,7 @@ ngOnInit(): void {
 
         this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter} s` ;
       }, 1000)
-    }, 45000)
+    }, 30000)
 
   }
 
@@ -143,7 +144,7 @@ ngOnInit(): void {
 
         this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${repIntervalSecondCounter} s` ;
       }, 1000)
-    }, 45000)
+    }, 30000)
 
   }
 
@@ -166,9 +167,9 @@ ngOnInit(): void {
   setWarmUp = () => {
     this.videoPlayer.nativeElement.style.filter = "grayscale(50%) blur(10px)";
     this.warmUpText.nativeElement.style.display = "inline";
-    this.warmUpText.nativeElement.innerText = '45';
+    this.warmUpText.nativeElement.innerText = '30';
 
-    var warmUpCounter = 45;
+    var warmUpCounter = 30;
     var warmUpInterval = setInterval(() => {
       warmUpCounter -= 1;
       if(warmUpCounter == 0) {

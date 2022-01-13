@@ -22,8 +22,8 @@ export class DebComponent implements OnInit, AfterViewInit {
   MIRROR_FRAMES_PER_SEC = 3;
 
   isStreaming: boolean = false;
-  outputWidth: number = 500;
-  outputHeight: number = 0; /* this will be set depending on the aspect ratio of the camera */
+  outputWidth: number = 500;  /* this will be set depending on the aspect ratio of the camera */
+  outputHeight: number = 500;
   intervalRef: any = 0;
 
   @ViewChild('vCanvas', {static: false}) canvasElem: ElementRef;
@@ -68,7 +68,7 @@ export class DebComponent implements OnInit, AfterViewInit {
               private socketService: SocketsService) {
 
     this.currentExerciseState = {
-      currExercise: { name: "No Data", type: "none", vpath: ''},
+      currExercise: { name: "No Data", type: "none", vpath: '', imageRef: ''},
       exerciseNo: 0,
       currSet: 1,
       currRep: 0,
@@ -77,8 +77,9 @@ export class DebComponent implements OnInit, AfterViewInit {
   }
 
   mediaVideosArray = {
-    cactus: {name: 'Cactus Meme Video', path: './../../../../assets/cactus.mp4'},
-    another: {name: 'Another Video', path: './../../../../assets/video0_1.mp4'}
+    funnyCats: {name: 'Funny Cats Compilation', path: './../../../../assets/sec_media/Funny Cats.mp4'},
+    topGear: {name: 'Top Gear - Racing across St. Petersburg', path: './../../../../assets/sec_media/Top Gear.mp4'},
+    techLinked: {name: 'Tech Linked news', path: './../../../../assets/sec_media/Techlicked - news.mp4'}
   }
 
   secondaryMediaState: ISecondaryMediaState = {
@@ -123,11 +124,6 @@ export class DebComponent implements OnInit, AfterViewInit {
     /* STREAMING VIDEO FEED */
     this.video.addEventListener('canplay', () => {
       if(!this.isStreaming) {
-        this.outputHeight = this.video.videoHeight / (this.video.videoWidth/this.outputWidth);
-
-        if (isNaN(this.outputHeight)) {
-          this.outputHeight = this.outputWidth / (4/3);
-        }
 
         this.video.setAttribute('width', `${this.outputWidth}`)
         this.video.setAttribute('height', `${this.outputHeight}`)
@@ -145,11 +141,6 @@ export class DebComponent implements OnInit, AfterViewInit {
     this.canvas = this.canvasElem.nativeElement;
 
     if(!this.isStreaming) {
-      this.outputHeight = this.video.videoHeight / (this.video.videoWidth/this.outputWidth);
-
-      if (isNaN(this.outputHeight)) {
-        this.outputHeight = this.outputWidth / (4/3);
-      }
 
       this.video.setAttribute('width', `${this.outputWidth}`)
       this.video.setAttribute('height', `${this.outputHeight}`)
