@@ -1,11 +1,11 @@
 <div class="music-area icons-shadow">
   <div class="disc-area  ">
-      <img src="./../../../../assets/disc.png" alt="disc">
+      <img src="./../../../../assets/disc.png" alt="disc"  #musicDisc>
       <div class="disc-info">
-          <h2 class="header-2 color-text--swhite ">Lose Yourself</h2>
-          <h4 class="para-2 color-text--swhite ">Eminem</h4>
+          <h2 class="header-2 color-text--swhite ">{{cStatus.song.name}}</h2>
+          <h4 class="para-2 color-text--swhite ">{{cStatus.song.artist}}</h4>
       </div>
-      <h5 class="para-2 color-text--swhite ">2:43</h5>
+      <h5 class="para-2 color-text--swhite ">{{cStatus.song.duration}}</h5>
   </div>
   <div class="icons-area color-br--shade--dark round-corners--bottom  ">
       <img src="./../../../../assets/prev song.svg" alt="video1trainer" #prevButton (click)="playAgain()">

@@ -18,18 +18,31 @@ export class PlayerComponent implements AfterViewInit {
   @ViewChild("prevButton", {static: false}) prevButtonRef: ElementRef;
   @ViewChild("playbackButton", {static: false}) playbackButtonRef: ElementRef;
   @ViewChild("nextButton", {static: false}) nextButtonRef: ElementRef;
+  @ViewChild("musicDisc", {static: false}) musicDiscRef: ElementRef;
 
   prevButton: HTMLImageElement;
   playbackButton: HTMLImageElement;
   nextButton: HTMLImageElement;
+  musicDisc: HTMLImageElement;
 
-  cStatus: IMusicState;
+  cStatus: IMusicState = {
+    song: {
+      name: "Lose Yourself",
+      artist: "Eminem",
+      duration : "2:43",
+      filepath: 'none'
+    },
+    status: 'paused',
+    index: 0,
+    volume: .2,
+  };
 
   ngAfterViewInit(): void {
 
     this.prevButton = this.prevButtonRef.nativeElement;
     this.nextButton = this.nextButtonRef.nativeElement;
     this.playbackButton = this.playbackButtonRef.nativeElement;
+    this.musicDisc = this.musicDiscRef.nativeElement;
 
     this.media.getMusicState().subscribe(r => {
       this.cStatus = r;
@@ -46,10 +59,14 @@ export class PlayerComponent implements AfterViewInit {
 
     if(state.status == "playing") {
       this.playbackButton.src = './../../../../assets/pause.svg';
+
+
     }
     else {
       this.playbackButton.src = './../../../../assets/play.svg';
     }
+
+
   }
 
   togglePlayback = () => {

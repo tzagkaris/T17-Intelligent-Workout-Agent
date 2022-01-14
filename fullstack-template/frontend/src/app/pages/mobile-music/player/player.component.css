@@ -106,3 +106,15 @@ p.para-2 {
 .all-music {
   margin: 150px 0px;
 }
+
+/* bonus */
+.spinning_disc {
+  animation-name: spin;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}
