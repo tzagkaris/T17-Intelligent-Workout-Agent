@@ -1,26 +1,30 @@
 <div class="onworkout-container color-br--shade--dark frame-shadow--primary round-corners--primary">
   <div class="text-rep">
-      <h4 class="header-4 color-text--swhite">Upper body - M+</h4>
-      <h4 class="header-4 color-text--swhite">3 / 7</h4>
+      <h4 class="header-4 color-text--swhite">Upper Body - Core - E</h4>
+      <h4 class="header-4 color-text--swhite">{{workoutState.exerciseNo + 1}} / 7</h4>
   </div>
   <div class="text-camera color-br--shade--darkest">
       <div class="color-br--shade--dark round-corners--primary">
-          <h4 class="header-4 color-text--swhite">Enable camera as Mirror</h4>
+          <h4 class="header-4 color-text--swhite" (click)="toggleShare()" #mirrorButton>Enable Mirror</h4>
       </div>
       <img src="./../../../../assets/cameraMirror.svg" alt="video1trainer">
-  </div>
+    </div>
+
   <div class="text-set-rep ">
       <h4 class="header-4 color-text--swhite">Set</h4>
-      <h4 class="header-4 color-text--swhite">Rep</h4>
+      <h4 class="header-4 color-text--swhite" #repTimeTextRef>Rep</h4>
   </div>
   <div class="numbers color-br--shade--darkest">
-      <span class="number color-text--swhite">2</span>
-      <span class="number color-text--swhite">3</span>
+      <span class="number color-text--swhite">{{workoutState.currSet}}</span>
+      <span class="number color-text--swhite" #repTimeRef>3</span>
   </div>
   <!-- same class text-rep for exercise and total reps needed-->
   <div class="text-rep">
-      <h4 class="header-4 color-text--swhite">Bicep Curls</h4>
-      <h4 class="header-4 color-text--swhite">( 3 x 12 )</h4>
+      <h4 class="header-4 color-text--swhite">{{workoutState.currExercise.name}}</h4>
+      <h4 class="header-4 color-text--swhite">( {{setRep}} )</h4>
   </div>
 
 </div>
+<video  #vShow>Video not supported.</video>
+<canvas #vCanvas id="canvas">
+</canvas>

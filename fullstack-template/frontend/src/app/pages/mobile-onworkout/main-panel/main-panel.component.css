@@ -67,6 +67,7 @@ h4.header-4 {
 
 .text-camera {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   padding: 22px 0px;
@@ -75,11 +76,15 @@ h4.header-4 {
 .text-set-rep {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .numbers {
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   font-size: 60px;
   font-weight: 500;
 }
+
