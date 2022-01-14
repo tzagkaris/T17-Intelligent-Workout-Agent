@@ -36,6 +36,7 @@ export class MainComponent implements OnInit {
 
   public exInfo = "no info";
   isTimerActive: boolean = false;
+  isWarmUpActive: boolean = false;
 
   constructor(private exService: ExerciseStateService, private socketService: SocketsService,
     private media: MediaService) {}
@@ -158,7 +159,7 @@ ngOnInit(): void {
     switch(status.currExercise.type) {
       case 'Regular':
         case 'Weights':
-          if(status.currRep == 0 ) this.setWarmUp();
+          if(status.currRep == 0 && !this.isWarmUpActive) this.setWarmUp();
           break;
 
         case 'CountDown':
@@ -177,8 +178,9 @@ ngOnInit(): void {
     var warmUpCounter = 30;
     var warmUpInterval = setInterval(() => {
       warmUpCounter -= 1;
+      this.isWarmUpActive = true;
       if(warmUpCounter == 0) {
-
+        this.isWarmUpActive = false;
         clearInterval(warmUpInterval);
         this.warmUpText.nativeElement.style.display = "none";
         this.videoPlayer.nativeElement.style.filter = "none";
