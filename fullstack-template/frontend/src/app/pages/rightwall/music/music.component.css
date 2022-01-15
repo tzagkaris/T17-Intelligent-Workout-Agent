@@ -111,7 +111,18 @@ p.para-2.color-text--swhite {
   margin-right: auto;
 }
 
-.icons-area, .icon1 img {
+.icons-area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: space-around;
+
+  padding-block: .4rem;
+}
+
+/* .icons-area, .icon1 img {
   margin-left: 37px;
   margin-right: 75px;
 }
@@ -119,7 +130,7 @@ p.para-2.color-text--swhite {
 .icons-area img {
   margin-top: 10px;
   margin-bottom: 10px;
-}
+} */
 
 .small-singer{
   font-size: 10px;
@@ -228,4 +239,16 @@ body {
   background-image: url(./../../../../assets/rightwall-background.png);
   background-repeat: no-repeat;
 
+}
+
+/* bonus */
+.spinning_disc {
+  animation-name: spin;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg);}
 }

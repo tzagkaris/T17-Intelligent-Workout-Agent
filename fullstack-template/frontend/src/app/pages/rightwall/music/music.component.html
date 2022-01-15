@@ -4,54 +4,55 @@
 
     <h1 class="title-1 color-text--swhite padding-top-3">Music Player</h1>
       <div class="disc-area">
-          <img src="./../../../../assets/disc.png" alt="disc">
+          <img src="./../../../../assets/disc.png" alt="disc" #discRef>
           <div class="disc-info">
-              <h2 class="header-2 color-text--swhite ">Lose Yourself</h2>
-              <h4 class="para-2 color-text--swhite ">Eminem</h4>
+              <h2 class="header-2 color-text--swhite ">{{cState.song.name}}</h2>
+              <h4 class="para-2 color-text--swhite ">{{cState.song.artist}}</h4>
           </div>
-          <h5 class="para-2 color-text--swhite ">2:43</h5>
+          <h5 class="para-2 color-text--swhite ">{{cState.song.duration}}</h5>
       </div>
 
       <div class="icons-area">
-          <span class="icon1"><img src="./../../../../assets/prev-song.png" alt="disc"></span>
-          <img src="./../assets/pause.png" alt="disc">
+          <img src="./../../../../assets/prev-song.png" class="fbutton" alt="disc" #prevButton (click)="prevSong()">
+          <img src="./../../../../assets/play-dark.svg" class="fbutton"alt="disc"#playbackButton (click)="togglePlayback()">
+          <img src="./../../../../assets/next-song.svg" class="fbutton" alt="disc" #nextButton (click)="nextSong()">
       </div>
 
       <div class="next-songs-container color-br--shade--dark">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Venom<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[0].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[0].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">3:12</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[0].duration}}</h4>
               <img src="./../../../../assets/blackquestion.png" alt="question">
           </div>
       </div>
 
       <div class="next-songs-container ">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Without Me<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[1].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[1].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">3:45</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[1].duration}}</h4>
               <img src="./../../../../assets/grayquestion.png" alt="question">
           </div>
       </div>
 
       <div class="next-songs-container color-br--shade--dark">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Killshot<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[2].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[2].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">2:55</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[2].duration}}</h4>
               <img src="./../../../../assets/blackquestion.png" alt="question">
           </div>
       </div>
 
       <div class="telitses ">
-          <span class="title-1 color-text--swhite ">...</span>
+          <span class="title-1 color-text--swhite fadeout">...</span>
       </div>
 
-      <div class="playlists-area ">
+      <div class="playlists-area fadeout">
           <div class="leftside">
               <img src="./../../../../assets/leftarrow.png" alt="question">
               <div class="prev-playlist">
@@ -61,7 +62,7 @@
           </div>
           <div class="rightside">
 
-              <div class="next-playlist">
+              <div class="next-playlist fadeout">
                   <h4 class="header-4 color-text--swhite ">My Chillax Mix PreYoga</h4><span class="small-singer  color-text--swhite"> 18 tracks - 1.3 hours</span>
               </div>
               <img src="./../../../../assets/rightarrow.png" alt="question">
@@ -72,7 +73,7 @@
 
       <div class="manage-playlists color-br--shade--dark">
           <div class="song-name">
-              <h2 class="header-2 color-text--swhite ">Manage playlists</h2>
+              <h2 class="header-2 color-text--swhite fadeout">Manage playlists</h2>
           </div>
 
       </div>

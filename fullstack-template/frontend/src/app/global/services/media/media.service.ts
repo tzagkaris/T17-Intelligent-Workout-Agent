@@ -83,7 +83,7 @@ export class MediaService {
   /* returns an array of ISong ( see interfaces above ) */
   public getMusicTrackList = () => {
 
-    return this.http.get(`${this.hostURI}/api/media/music/list`);
+    return this.http.get<ISong[]>(`${this.hostURI}/api/media/music/list`);
   }
 
 
