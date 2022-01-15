@@ -16,7 +16,7 @@ export class LeftwallComponent implements OnInit{
   constructor(private vas: VoiceAssistantService, private sock: SocketsService) {}
 
   ngOnInit(): void {
-      this.vas.init();
+      //this.vas.init();
 
       this.sock.syncMessages('media/bell').subscribe((msg) => {
         this.playSound();

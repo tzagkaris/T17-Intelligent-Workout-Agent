@@ -19,8 +19,8 @@
         </div>
 
         <div class="lightgraybox color-br--swhite round-corners--primary">
-            <div class="funfactwords">
-                <p class="para-2 color-text--shade--medium"> Your calories could light a bulb for  <span class="color-text--shade--darkest"> 213</span> hours </p>
+            <div class="funfactwords" (click)="changeFact(factOutput)">
+                <p class="para-2 color-text--shade--medium" #factOutput> Your calories could light a bulb for  <span class="color-text--shade--darkest"> 213</span> hours. </p>
             </div>
             <div class="recycle">
                 <img src="./../assets/recycle.png" alt="recycle new quote">

@@ -4,45 +4,46 @@
 
     <h1 class="title-1 color-text--swhite padding-top-3">Music Player</h1>
       <div class="disc-area">
-          <img src="./../../../../assets/disc.png" alt="disc">
+          <img src="./../../../../assets/disc.png" alt="disc" #discRef>
           <div class="disc-info">
-              <h2 class="header-2 color-text--swhite ">Lose Yourself</h2>
-              <h4 class="para-2 color-text--swhite ">Eminem</h4>
+              <h2 class="header-2 color-text--swhite ">{{cState.song.name}}</h2>
+              <h4 class="para-2 color-text--swhite ">{{cState.song.artist}}</h4>
           </div>
-          <h5 class="para-2 color-text--swhite ">2:43</h5>
+          <h5 class="para-2 color-text--swhite ">{{cState.song.duration}}</h5>
       </div>
 
       <div class="icons-area">
-          <span class="icon1"><img src="./../../../../assets/prev-song.png" alt="disc"></span>
-          <img src="./../assets/pause.png" alt="disc">
+          <img src="./../../../../assets/prev-song.png" alt="disc" #prevButton (click)="prevSong()">
+          <img src="./../../../../assets/play-dark.svg" alt="disc"#playbackButton (click)="togglePlayback()">
+          <img src="./../../../../assets/next-song.svg" alt="disc" #nextButton (click)="nextSong()">
       </div>
 
       <div class="next-songs-container color-br--shade--dark">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Venom<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[0].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[0].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">3:12</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[0].duration}}</h4>
               <img src="./../../../../assets/blackquestion.png" alt="question">
           </div>
       </div>
 
       <div class="next-songs-container ">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Without Me<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[1].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[1].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">3:45</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[1].duration}}</h4>
               <img src="./../../../../assets/grayquestion.png" alt="question">
           </div>
       </div>
 
       <div class="next-songs-container color-br--shade--dark">
           <div class="song-name">
-              <h4 class="header-4 color-text--swhite ">Killshot<span class="small-singer color-text--swhite"> ( Eminem )</span></h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[2].name}}<span class="small-singer color-text--swhite"> ( {{this.currentShowSongList[2].artist}} )</span></h4>
           </div>
           <div class="time">
-              <h4 class="header-4 color-text--swhite ">2:55</h4>
+              <h4 class="header-4 color-text--swhite ">{{this.currentShowSongList[2].duration}}</h4>
               <img src="./../../../../assets/blackquestion.png" alt="question">
           </div>
       </div>

@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { IStatus } from 'src/app/global/models/exercise-state/exercise-state.models';
 import { SocketsService } from 'src/app/global/services';
 import { ExerciseStateService } from 'src/app/global/services/exercise-state/exercise-state.service';
-import { IMusicState, MediaService } from 'src/app/global/services/media/media.service';
+import { IMusicState, ISong, MediaService } from 'src/app/global/services/media/media.service';
 
 /**
  * TODO
@@ -21,30 +21,63 @@ export class MusicComponent implements OnInit, AfterViewInit {
   @ViewChild('audioElement', {static: true}) audioRef: ElementRef;
   audio: HTMLAudioElement;
 
+  @ViewChild('prevButton', {static: true}) prevButtonRef: ElementRef;
+  @ViewChild('nextButton', {static: true}) nextButtonRef: ElementRef;
+  @ViewChild('playbackButton', {static: true}) playbackButtonRef: ElementRef;
+  prevButton: HTMLImageElement;
+  nextButton: HTMLImageElement;
+  playbackButton: HTMLImageElement;
+
+  @ViewChild('discRef', {static: true}) discRef: ElementRef;
+  disc: HTMLImageElement;
+
   cState: IMusicState = {
     status: 'paused',
     index: -1,
     volume: .2,
     song: { /* placeholder */
-      name: 'None Playing',
-      artist: 'no info',
-      duration: '--:--',
+      name: 'Lose Yourself',
+      artist: 'Eminem',
+      duration: '05:21',
       filepath: ''
     }
   };
+
+  songList: ISong[] = [];
+  /* placeholders in case of backend problems */
+  currentShowSongList: ISong[] =
+  [
+    {name: 'Lose Yourself', artist: 'Eminem', duration: '5:21', filepath: './../../../../assets/music/Eminem - Lose Yourself.mp3'},
+    {name: 'Venom', artist: 'Eminem', duration: '4:31', filepath: './../../../../assets/music/Eminem - Venom.mp3'},
+    {name: 'Without Me', artist: 'Eminem', duration: '4:52', filepath: './../../../../assets/music/Eminem - Without Me.mp3'}
+  ];
 
   constructor(private media: MediaService, private sock: SocketsService) {}
 
   ngOnInit(): void {
     this.audio = this.audioRef.nativeElement;
-
   }
 
   ngAfterViewInit(): void {
 
+    this.prevButton = this.prevButtonRef.nativeElement;
+    this.nextButton = this.nextButtonRef.nativeElement;
+    this.playbackButton = this.playbackButtonRef.nativeElement;
+    this.disc = this.discRef.nativeElement;
+
+    this.media.getMusicTrackList().subscribe(songs => {
+      this.songList = songs;
+    })
+
+    this.media.getMusicState().subscribe(r => {
+      this.handleNewState(r)
+      this.filterSongList(r)
+    })
+
     this.sock.syncMessages('music/state')
     .subscribe((state) =>{
       this.handleNewState(state.message);
+      this.filterSongList(state.message)
     });
 
     this.audio.addEventListener('ended', () => {
@@ -61,9 +94,9 @@ export class MusicComponent implements OnInit, AfterViewInit {
 
     /* check pause/play if status changed */
     if(state.status == 'paused')
-    this.handlePause(state);
+      this.handlePause(state);
     else if(state.status == 'playing')
-    this.handlePlay(state);
+      this.handlePlay(state);
 
     this.handleVolumeChange(state);
       /* set the current state */
@@ -72,12 +105,16 @@ export class MusicComponent implements OnInit, AfterViewInit {
 
   public handlePause(newState: IMusicState) {
 
+    this.playbackButton.src = "./../../../../assets/play-dark.svg";
     this.audio.pause();
+    this.disc.classList.remove('spinning_disc');
   }
 
   public handlePlay(state: IMusicState) {
-    console.log(1);
+
+    this.playbackButton.src = "./../../../../assets/pause.png";
     this.audio.play();
+    this.disc.classList.add('spinning_disc');
   }
 
   public handleVolumeChange(state: IMusicState) {
@@ -105,5 +142,39 @@ export class MusicComponent implements OnInit, AfterViewInit {
   isAudioPlaying = () => {
     return !!(this.audio.currentTime > 0 && !this.audio.paused && !this.audio.ended && this.audio.readyState > 2);
   }
+
+  prevSong = () => {
+
+    this.media.setMusicPaused().subscribe();
+    setTimeout(() => this.media.setMusicPlaying().subscribe(), 500)
+  }
+
+  togglePlayback = () => {
+
+    if(this.cState.status == "paused")
+      this.media.setMusicPlaying().subscribe()
+    else
+      this.media.setMusicPaused().subscribe()
+  }
+
+  nextSong = () => {
+
+    this.media.nextTrack().subscribe()
+  }
+
+  filterSongList = (state: IMusicState) => {
+
+    let start_Index = state.index;
+
+    this.currentShowSongList = []
+    this.currentShowSongList.push(
+      this.songList[start_Index % 6],
+      this.songList[(start_Index+1) % 6],
+      this.songList[(start_Index+2) % 6],
+    )
+
+    console.log(this.currentShowSongList)
+  }
+
 
 }
