@@ -35,6 +35,8 @@ export class MainComponent implements OnInit {
   public currVideoPath: String = './../../assets/cactus.mp4';  /* temp video */
 
   public exInfo = "no info";
+  isTimerActive: boolean = false;
+  isWarmUpActive: boolean = false;
 
   constructor(private exService: ExerciseStateService, private socketService: SocketsService,
     private media: MediaService) {}
@@ -97,11 +99,11 @@ ngOnInit(): void {
         break;
 
       case 'CountDown':
-        this.simulateRepCountDown(this.setRepInfo.nativeElement.innerText, status)
+        if(!this.isTimerActive) this.simulateRepCountDown(this.setRepInfo.nativeElement.innerText, status)
         break;
 
       case 'CountUp':
-        this.simulateRepCountUp(this.setRepInfo.nativeElement.innerText, status)
+        if(!this.isTimerActive) this.simulateRepCountUp(this.setRepInfo.nativeElement.innerText, status)
         break;
 
     }
@@ -113,12 +115,14 @@ ngOnInit(): void {
     if(!status.currExercise.countDownTimeInSecs) return;
     this.setRepInfo.nativeElement.innerText = `${status.currSet} - ${ status.currExercise.countDownTimeInSecs} s` ;
     setTimeout(() => {
+      this.isTimerActive = true;
       /* this runs every second. If counter reaches 0, this stops ticking */
       var repIntervalSecondCounter = status.currExercise.countDownTimeInSecs;
       var repInterval = setInterval(() => {
         repIntervalSecondCounter -= 1;
         if(repIntervalSecondCounter == 0) {
           clearInterval(repInterval);
+          this.isTimerActive = false;
           this.media.ringCompletionBell().subscribe();
         }
 
@@ -133,12 +137,14 @@ ngOnInit(): void {
     if(!status.currExercise.countDownTimeInSecs) return;
     this.setRepInfo.nativeElement.innerText = `${status.currSet} - 0 s` ;
     setTimeout(() => {
+      this.isTimerActive = true;
       /* this runs every second. If counter reaches 0, this stops ticking */
       var repIntervalSecondCounter = 0;
       var repInterval = setInterval(() => {
         repIntervalSecondCounter += 1;
         if(repIntervalSecondCounter == status.currExercise.countDownTimeInSecs) {
           clearInterval(repInterval);
+          this.isTimerActive = false;
           this.media.ringCompletionBell().subscribe();
         }
 
@@ -153,12 +159,12 @@ ngOnInit(): void {
     switch(status.currExercise.type) {
       case 'Regular':
         case 'Weights':
-          if(status.currRep == 0 ) this.setWarmUp();
+          if(status.currRep == 0 && !this.isWarmUpActive) this.setWarmUp();
           break;
 
         case 'CountDown':
         case 'CountUp':
-          this.setWarmUp();
+          if(!this.isTimerActive) this.setWarmUp();
           break;
 
     }
@@ -172,8 +178,9 @@ ngOnInit(): void {
     var warmUpCounter = 30;
     var warmUpInterval = setInterval(() => {
       warmUpCounter -= 1;
+      this.isWarmUpActive = true;
       if(warmUpCounter == 0) {
-
+        this.isWarmUpActive = false;
         clearInterval(warmUpInterval);
         this.warmUpText.nativeElement.style.display = "none";
         this.videoPlayer.nativeElement.style.filter = "none";
