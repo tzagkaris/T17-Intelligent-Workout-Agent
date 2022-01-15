@@ -12,11 +12,13 @@ import { OtherDay3Component } from './other-day3/other-day3.component';
 import { OtherDay4Component } from './other-day4/other-day4.component';
 import { OtherDay5Component } from './other-day5/other-day5.component';
 import { FooterCalendarComponent } from './footer-calendar/footer-calendar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    MobileCalendarRoutingModule
+    MobileCalendarRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileCalendarComponent,

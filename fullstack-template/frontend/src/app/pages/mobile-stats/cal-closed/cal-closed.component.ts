@@ -8,6 +8,6 @@ import { ExerciseStateService } from 'src/app/global/services/exercise-state/exe
   templateUrl: './cal-closed.component.html',
   styleUrls: ['./cal-closed.component.css']
 })
-export class CalClosedComponent {
+export class CaloClosedComponent {
 
 }

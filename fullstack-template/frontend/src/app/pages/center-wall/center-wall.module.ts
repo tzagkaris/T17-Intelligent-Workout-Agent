@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CenterWallComponent } from './center-wall.component';
+import { CenterWallComponent } from './center-wall.component'
+import { CalClosedComponent } from './cal-closed/cal-closed.component';
 import { StartComponent } from './start/start.component';
 import { UserComponent } from './user/user.component';
-import { CalClosedComponent } from './cal-closed/cal-closed.component';
+import { RouterModule } from '@angular/router';
 import { CenterWallRoutingModule } from './center-wall.routing';
 
 @NgModule({
@@ -11,11 +12,6 @@ import { CenterWallRoutingModule } from './center-wall.routing';
     CommonModule,
     CenterWallRoutingModule
   ],
-  declarations: [
-    CenterWallComponent,
-    StartComponent,
-    CalClosedComponent,
-    UserComponent
-  ]
+  declarations: [CenterWallComponent, CalClosedComponent, StartComponent, UserComponent]
 })
 export class CenterWallModule { }
