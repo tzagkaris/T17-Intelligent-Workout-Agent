@@ -114,8 +114,9 @@ p.para-2 {
   display: flex;
   position: fixed;
     bottom: 0;
+    width: 100%;
     /* min-width: -webkit-fill-available; */
-    width: -webkit-fill-available;
+
 }
 
 .footer-bar img {
