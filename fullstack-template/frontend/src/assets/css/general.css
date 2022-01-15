@@ -344,10 +344,22 @@ h1, h2, h3, h4, h5 {
   padding-inline: 1rem;
 }
 
+.fbutton:hover {
+  cursor: pointer
+}
+
 .button-switch:hover,
 .button-switch--checked:hover,
 .button-switch--unchecked:hover {
   cursor: pointer;
+}
+
+.button-prim:hover {
+  cursor: pointer;
+}
+
+.fadeout {
+  filter: invert(66%) sepia(1%) saturate(0%) hue-rotate(235deg) brightness(98%) contrast(90%);
 }
 
 /* for this to work div must have a set height */

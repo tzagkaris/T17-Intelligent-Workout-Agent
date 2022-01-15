@@ -117,10 +117,10 @@ export class TimerComponent implements OnInit, AfterViewInit {
 
       if(pres[0] == '-') {
         this.heartPresentageIcon.nativeElement
-        .setAttribute('src', './../../assets/down-trending-icon.svg');
+        .setAttribute('src', './../../../../assets/down-trending-icon.svg');
       } else {
         this.heartPresentageIcon.nativeElement
-        .setAttribute('src', './../../assets/up-trending-icon.svg');
+        .setAttribute('src', './../../../../assets/up-trending-icon.svg');
       }
 
       this.heartPresentage.nativeElement.innerHTML = `${pres.substring(0, 4)}%`;

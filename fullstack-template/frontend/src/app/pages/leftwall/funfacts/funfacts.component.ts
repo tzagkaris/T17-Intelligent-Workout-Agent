@@ -13,7 +13,7 @@ export class FunfactsComponent {
   facts = [
     'Your calories could light a bulb for 213 hours.',
     'Your favorite exercise is: Close Tricep Pushups.',
-    'An apple a day keep\'s the doctor away... And using the app of course!',
+    'An apple a day keeps the doctors away... And using this app of course!',
     'You are reps away from one thousand pushups.',
     'Don\'t delay, burn today. Louis Rossman classic.',
     'Super Obvious Secret: All other info in this page is static...',
