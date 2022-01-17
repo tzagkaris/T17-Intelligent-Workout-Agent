@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { MobileStatsRoutingModule } from './mobile-stats.routing';
 import { MobileStatsComponent } from './mobile-stats.component';
 import { LoginComponent } from './login/login.component';
-import { CalClosedComponent } from './cal-closed/cal-closed.component';
+import { CaloClosedComponent } from './cal-closed/cal-closed.component';
 import { BpmClosedComponent } from './bpm-closed/bpm-closed.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { FooterStatsComponent } from './footer-stats/footer-stats.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,12 +17,13 @@ import { FooterStatsComponent } from './footer-stats/footer-stats.component';
 @NgModule({
   imports: [
     CommonModule,
-    MobileStatsRoutingModule
+    MobileStatsRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileStatsComponent,
     LoginComponent,
-    CalClosedComponent,
+    CaloClosedComponent,
     BpmClosedComponent,
     PerformanceComponent,
     FooterStatsComponent

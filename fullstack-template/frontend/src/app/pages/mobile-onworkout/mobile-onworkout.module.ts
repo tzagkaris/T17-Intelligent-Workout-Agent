@@ -6,6 +6,7 @@ import { MobileOnworkoutComponent } from './mobile-onworkout.component';
 import { LoginComponent } from './login/login.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { FooterIndexComponent } from './footer-index/footer-index.component';
 @NgModule({
   imports: [
     CommonModule,
-    MobileOnworkoutRoutingModule
+    MobileOnworkoutRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileOnworkoutComponent,

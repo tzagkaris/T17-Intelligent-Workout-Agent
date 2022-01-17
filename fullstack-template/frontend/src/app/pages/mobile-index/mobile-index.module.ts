@@ -8,11 +8,13 @@ import { SchedComponent } from './sched/sched.component';
 import { QuickComponent } from './quick/quick.component';
 import { CustomComponent } from './custom/custom.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    MobileIndexRoutingModule
+    MobileIndexRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileIndexComponent,

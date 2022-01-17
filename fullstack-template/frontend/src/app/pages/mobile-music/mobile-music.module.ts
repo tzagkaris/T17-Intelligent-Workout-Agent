@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { PlayerComponent } from './player/player.component';
 import { ManageButtonComponent } from './manage-button/manage-button.component';
 import { FooterMusicComponent } from './footer-music/footer-music.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    MobileMusicRoutingModule
+    MobileMusicRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileMusicComponent,

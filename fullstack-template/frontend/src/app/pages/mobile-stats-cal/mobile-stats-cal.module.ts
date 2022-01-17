@@ -8,6 +8,7 @@ import { FooterStatsComponent } from './footer-stats/footer-stats.component';
 import { BpmClosedComponent } from './bpm-closed/bpm-closed.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { CalOpenComponent } from './cal-open/cal-open.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,7 +17,8 @@ import { CalOpenComponent } from './cal-open/cal-open.component';
 @NgModule({
   imports: [
     CommonModule,
-    MobileStatsCalRoutingModule
+    MobileStatsCalRoutingModule,
+    RouterModule
   ],
   declarations: [
     MobileStatsCalComponent,
