@@ -6,7 +6,7 @@ music {
   align-self: center;
 }
 body {
-  background-image: url(./../../../assets/rightwall-background.png);
+  background-image: url(./../../../assets/rightwall.png);
   background-repeat: no-repeat;
   height: 1200px;
   display: flex;
