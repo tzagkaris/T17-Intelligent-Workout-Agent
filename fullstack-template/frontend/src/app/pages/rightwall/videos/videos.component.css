@@ -229,3 +229,8 @@ body {
   background-repeat: no-repeat;
 
 }
+
+.br-opacity {
+  background-color: rgba(50, 50, 50, 0.73);
+  padding-top: 2px;
+}
