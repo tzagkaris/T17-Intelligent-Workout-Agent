@@ -9,6 +9,7 @@
 
 body{
   background-image: url("./../../../assets/leftwall.png");
+  background-color: #000000;
   background-repeat: no-repeat;
   height: 1200px;
   display: flex;
